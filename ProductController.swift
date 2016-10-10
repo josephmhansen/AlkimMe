@@ -14,10 +14,20 @@ class ProductController {
     
     static let sharedController = ProductController()
     
+//    let fetchedResultsController: NSFetchedResultsController<AnyObject>
+    
+    
+    
     var products: [Product] {
+        
+        
         let request: NSFetchRequest<Product> = Product.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "priority", ascending: false)
-        request.sortDescriptors = [sortDescriptor]
+        let sortDescriptor1 = NSSortDescriptor(key: "priority", ascending: false)
+        let sortDescriptor2 = NSSortDescriptor(key: "have", ascending: false)
+        
+        request.sortDescriptors = [sortDescriptor1, sortDescriptor2]
+        
+        
         
         let products = try? CoreDataStack.context.fetch(request) as [Product]
         
@@ -32,6 +42,8 @@ class ProductController {
         //        }
         
     }
+    
+    
     
     
     func serializeJSON(_ completion: (_ products: [Product]) -> Void) {
