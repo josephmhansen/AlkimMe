@@ -8,6 +8,8 @@
 
 import UIKit
 
+@IBDesignable
+
 class AddProductsTableViewCell: UITableViewCell {
     @IBOutlet weak var productLogoSymbol: UIImageView!
 
@@ -26,9 +28,18 @@ class AddProductsTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func updateWithProduct(product: Product) {
-        self.product = product
-        productNameLabel.text = product.name
+   
+    
+    
+    @IBAction func haveProductBoxChecked(_ sender: AnyObject) {
+        if let delegate = delegate {
+            delegate.haveProductValueChanged(sender: self)
+        }
+        
+    }
+    
+    func updateHaveButton(have: Bool) {
+        guard let product = product else { return }
         
         if product.have == true {
             haveProduct.setImage(#imageLiteral(resourceName: "complete"), for: .normal)
@@ -37,22 +48,32 @@ class AddProductsTableViewCell: UITableViewCell {
         }
     }
     
-    
-    @IBAction func haveProductBoxChecked(_ sender: AnyObject) {
-        guard let product = product else { return }
-        delegate?.haveProductValueChanged(cell: self, haveProduct: product.have)
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
+    
+    
   
 
 }
 
 protocol AddProductTableViewCellDelegate: class {
-    func haveProductValueChanged(cell: AddProductsTableViewCell, haveProduct: Bool)
+    func haveProductValueChanged(sender: AddProductsTableViewCell)
+    
+}
+
+protocol ShelfCollectionViewDelegate: class {
+    func updateShelfCollectionView(sender: AddProductsTableViewCell)
+}
+
+
+extension AddProductsTableViewCell {
+    func updateWithProduct(product: Product) {
+        productNameLabel.text = product.name
+        productLogoSymbol.image = UIImage(named: "\(product.imageName)")
+        updateHaveButton(have: product.have)
+    }
 }

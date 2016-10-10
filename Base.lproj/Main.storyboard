@@ -363,7 +363,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oaq-bb-SRL" id="7VU-DE-hEa">
-                                            <frame key="frameInset" width="343" height="72"/>
+                                            <frame key="frameInset" width="343" height="72.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="U4l-0T-81z">
@@ -424,6 +424,9 @@
                             <color key="tintColor" red="1" green="0.27495170660000001" blue="0.21768624510000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="cao-3u-0wI" id="Hgh-zT-jmm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b3y-Zo-QJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

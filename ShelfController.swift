@@ -12,7 +12,9 @@ import CoreData
 
 class ShelfController{
     
-    var productsUserHas: [Product] = []
+    static var productsUserHas: [Product] = [] {
+        
+    }
     
     
     

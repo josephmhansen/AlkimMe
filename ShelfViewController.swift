@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShelfViewController: UIViewController {
+class ShelfViewController: UIViewController, ShelfCollectionViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,12 @@ class ShelfViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    func updateShelfCollectionView(sender: AddProductsTableViewCell) {
+        //        reload view with items user has
     }
     
 
