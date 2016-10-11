@@ -12,9 +12,11 @@ import CoreData
 
 class ShelfController{
     
-    static var productsUserHas: [Product] = [] {
-        
-    }
+    
+    var product: Product?
+    
+    //make a computed property to check if product.have is true.
+    static var productsUserHas: [Product] = []
     
     
     
@@ -23,7 +25,7 @@ class ShelfController{
     func createProductArrayForShelf(_ product: Product) -> [Product]{
         
         
-        return productsUserHas
+        return ShelfController.productsUserHas
     }
     
     func orderProductsByPriority(){
@@ -34,7 +36,7 @@ class ShelfController{
     
     func addProductToShelf(_ product: Product) {
         
-        productsUserHas.append(product)
+        ShelfController.productsUserHas.append(product)
         
         ProductController.sharedController.saveToPersistentStorage()
     }

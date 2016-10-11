@@ -10,6 +10,7 @@ import UIKit
 
 class ShelfViewController: UIViewController, ShelfCollectionViewDelegate {
 
+    //NSUSer defaults check if app is running for the first time, default to true, if true then create all products. after then set to false
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -25,7 +25,6 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         ProductController.sharedController.fetchedResultsController?.delegate = self
     }
 

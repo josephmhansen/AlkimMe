@@ -5,6 +5,7 @@
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ingredients" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="instructions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logoName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="priority" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -26,7 +27,7 @@
         <relationship name="toRoutine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine" inverseName="toSurvey" inverseEntity="Routine" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Product" positionX="-416" positionY="-604" width="128" height="165"/>
+        <element name="Product" positionX="-416" positionY="-604" width="128" height="180"/>
         <element name="Routine" positionX="-414" positionY="-315" width="128" height="118"/>
         <element name="Shelf" positionX="-144" positionY="-396" width="128" height="73"/>
         <element name="Survey" positionX="-144" positionY="-162" width="128" height="73"/>

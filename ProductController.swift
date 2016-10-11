@@ -18,16 +18,7 @@ class ProductController {
     
     
     
-    var products: [Product] {
-        
-        
-        let request: NSFetchRequest<Product> = Product.fetchRequest()
-        let sortDescriptor1 = NSSortDescriptor(key: "priority", ascending: false)
-        let sortDescriptor2 = NSSortDescriptor(key: "have", ascending: false)
-        
-        request.sortDescriptors = [sortDescriptor1, sortDescriptor2]
-        
-        
+    var products: [Product] = [] /* {
         
         let moc = CoreDataStack.context
                 do {
@@ -39,9 +30,9 @@ class ProductController {
         
         let products = try? CoreDataStack.context.fetch(request) as [Product]
         
-        return products ?? []
+        return self.products ?? []
         
-    }
+    } */
     
     init() {
         
@@ -76,14 +67,18 @@ class ProductController {
         print(json)
         
         let products = productDictionaries.flatMap { Product(dictionary: $0) }
+        self.products = products
         completion(products)
+        
+        
     }
     
     
     
     
+    
     func createAllProducts() {
-        print(products)
+        _ = products
         
         saveToPersistentStorage()
     }

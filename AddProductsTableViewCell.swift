@@ -60,6 +60,14 @@ class AddProductsTableViewCell: UITableViewCell {
 
 }
 
+extension AddProductsTableViewCell {
+    func updateWithProduct(product: Product) {
+        productNameLabel.text = product.name
+        productLogoSymbol.image = UIImage(named: "\(product.imageName)")
+        updateHaveButton(have: product.have)
+    }
+}
+
 protocol AddProductTableViewCellDelegate: class {
     func haveProductValueChanged(sender: AddProductsTableViewCell)
     
@@ -70,10 +78,4 @@ protocol ShelfCollectionViewDelegate: class {
 }
 
 
-extension AddProductsTableViewCell {
-    func updateWithProduct(product: Product) {
-        productNameLabel.text = product.name
-        productLogoSymbol.image = UIImage(named: "\(product.imageName)")
-        updateHaveButton(have: product.have)
-    }
-}
+

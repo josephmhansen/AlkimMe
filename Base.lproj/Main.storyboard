@@ -20,19 +20,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="us0-HB-tam">
-                                <frame key="frameInset" minY="20" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="us0-HB-tam">
                                 <items>
                                     <navigationItem title="Current Routine" id="Aqg-22-qZd">
                                         <barButtonItem key="rightBarButtonItem" title="Stop" id="nSa-SH-B5B"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nMl-J2-Pwk">
-                                <frame key="frameInset" minX="16" minY="64" width="343" height="467"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nMl-J2-Pwk">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="467" id="deE-v3-vJG"/>
+                                </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="75" id="JcE-YO-OfT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="routineStepCell" rowHeight="75" id="JcE-YO-OfT">
                                         <rect key="frame" x="0.0" y="28" width="343" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JcE-YO-OfT" id="i9f-7X-JAe">
@@ -50,14 +51,13 @@
                                                 <constraint firstItem="0Of-cs-pyw" firstAttribute="leading" secondItem="i9f-7X-JAe" secondAttribute="leading" id="YNq-WW-7Tm"/>
                                                 <constraint firstAttribute="trailing" secondItem="0Of-cs-pyw" secondAttribute="trailing" id="mv8-QD-rRZ"/>
                                                 <constraint firstItem="0Of-cs-pyw" firstAttribute="top" secondItem="i9f-7X-JAe" secondAttribute="top" id="wWM-wj-ouZ"/>
+                                                <constraint firstItem="0Of-cs-pyw" firstAttribute="centerY" secondItem="i9f-7X-JAe" secondAttribute="centerY" id="wdU-jp-n3s"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AIq-sg-rSs">
-                                <frame key="frameInset" minX="16" minY="539" width="343" height="79"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIq-sg-rSs">
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hands_praise" translatesAutoresizingMaskIntoConstraints="NO" id="pT4-hj-ZkT">
                                         <frame key="frameInset" minX="57" minY="-42" width="229" height="163"/>
@@ -69,11 +69,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nMl-J2-Pwk" firstAttribute="leading" secondItem="44e-Mk-wdF" secondAttribute="leadingMargin" id="KHh-z7-KoY"/>
-                            <constraint firstItem="nMl-J2-Pwk" firstAttribute="top" secondItem="Ctv-ru-RDd" secondAttribute="bottom" id="Nkl-lq-y2u"/>
-                            <constraint firstItem="nMl-J2-Pwk" firstAttribute="trailing" secondItem="44e-Mk-wdF" secondAttribute="trailingMargin" id="ZtE-dE-gK5"/>
-                            <constraint firstItem="nMl-J2-Pwk" firstAttribute="top" secondItem="us0-HB-tam" secondAttribute="bottom" id="dDb-cj-agz"/>
-                            <constraint firstItem="nMl-J2-Pwk" firstAttribute="centerX" secondItem="us0-HB-tam" secondAttribute="centerX" id="mXh-0R-H8M"/>
+                            <constraint firstItem="us0-HB-tam" firstAttribute="bottom" secondItem="nMl-J2-Pwk" secondAttribute="top" id="8pV-ez-chR"/>
+                            <constraint firstItem="AIq-sg-rSs" firstAttribute="leading" secondItem="nMl-J2-Pwk" secondAttribute="leading" id="Atu-Jx-PaM"/>
+                            <constraint firstItem="nMl-J2-Pwk" firstAttribute="leading" secondItem="44e-Mk-wdF" secondAttribute="leadingMargin" id="F99-re-GJV"/>
+                            <constraint firstItem="nMl-J2-Pwk" firstAttribute="trailing" secondItem="44e-Mk-wdF" secondAttribute="trailingMargin" id="UTb-EL-Lcn"/>
+                            <constraint firstItem="nMl-J2-Pwk" firstAttribute="top" secondItem="Ctv-ru-RDd" secondAttribute="bottom" id="bEd-4B-q8m"/>
+                            <constraint firstItem="AIq-sg-rSs" firstAttribute="top" secondItem="nMl-J2-Pwk" secondAttribute="bottom" constant="8" symbolic="YES" id="dGG-uI-KXj"/>
+                            <constraint firstItem="us0-HB-tam" firstAttribute="centerX" secondItem="AIq-sg-rSs" secondAttribute="centerX" id="fzL-c5-K8M"/>
+                            <constraint firstItem="us0-HB-tam" firstAttribute="centerX" secondItem="nMl-J2-Pwk" secondAttribute="centerX" id="htF-sc-ODU"/>
+                            <constraint firstItem="AIq-sg-rSs" firstAttribute="bottom" secondItem="aZF-yy-A5N" secondAttribute="top" id="lgT-5Q-r4f"/>
+                            <constraint firstItem="us0-HB-tam" firstAttribute="leading" secondItem="44e-Mk-wdF" secondAttribute="leading" id="yUd-jN-Inn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Routine" id="zLd-2r-OdX">
