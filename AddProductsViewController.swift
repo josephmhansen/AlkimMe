@@ -25,6 +25,8 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print(ProductController.sharedController.products.count)
+        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
         ProductController.sharedController.fetchedResultsController?.delegate = self
     }
 
@@ -49,7 +51,7 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
         guard let sections = ProductController.sharedController.fetchedResultsController?.sections,
             let index = Int(sections[section].name) else { return nil }
         
-        if index == 0 {
+        if index == 1 {
             return "Have"
         } else {
             return "Need"

@@ -18,8 +18,8 @@ class ProductController {
     
     
     
-    var products: [Product] = [] /* {
-        
+    var products: [Product] {
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
         let moc = CoreDataStack.context
                 do {
                     let result = try moc.fetch(request)
@@ -27,7 +27,8 @@ class ProductController {
                 } catch {
                     return []
                 }
-        
+    }
+        /*
         let products = try? CoreDataStack.context.fetch(request) as [Product]
         
         return self.products ?? []
@@ -37,10 +38,10 @@ class ProductController {
     init() {
         
         let request: NSFetchRequest<Product> = Product.fetchRequest()
-        let sortDescriptor1 = NSSortDescriptor(key: "priority", ascending: false)
+//        let sortDescriptor1 = NSSortDescriptor(key: "priority", ascending: false)
         let sortDescriptor2 = NSSortDescriptor(key: "have", ascending: false)
         
-        request.sortDescriptors = [sortDescriptor1, sortDescriptor2]
+        request.sortDescriptors = [sortDescriptor2]
         
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "have", cacheName: nil)
         
@@ -63,11 +64,10 @@ class ProductController {
                 return
         }
         
-        print(data)
-        print(json)
+        
         
         let products = productDictionaries.flatMap { Product(dictionary: $0) }
-        self.products = products
+//        self.products = products
         completion(products)
         
         
@@ -78,9 +78,13 @@ class ProductController {
     
     
     func createAllProducts() {
-        _ = products
         
-        saveToPersistentStorage()
+        serializeJSON { (products) in
+            for product in products {
+                _ = product
+                saveToPersistentStorage()
+            }
+        }
     }
     
     func isHaveValueChecked(product: Product) {

@@ -7,7 +7,8 @@
          "instructions":"Mist lightly twice daily before applying ALKIM ME Vitamin C. May (should) also be used alone for added hydration and balance of the skin.",
          "name":"Mist",
          "price":15,
-         "priority_level":1
+         "priority":1,
+               "logo_name": ""
       },
       {  
          "have":false,
@@ -16,7 +17,8 @@
          "instructions":"In order to deliver the highest quality and the freshest Vitamin C EVER, we have packaged our powder and liquid separate so the only shelf life you'll have is on YOUR shelf. Each ALKIM ME Vitamin C comes with its own individual 5ml test tube of L ascorbic acid allowing you to be your very own alchemist. Make sure to wash your hands then add the entire contents of the test tube to your Vitamin C and  shake well. Make sure to remember to Shake well each and every time you use the Vitamin C. Apply  twice daily following The Mist. Make sure to treat your face, neck and decollete as well as the tops of your hands each and every time you apply.  For Maximum benefits allow the Vitamin C to sit for two minutes before using the Serum.",
          "name":"Vitamin C",
          "price":75,
-         "priority_level":2
+         "priority":2,
+               "logo_name": ""
       },
       {  
          "have":false,
@@ -25,7 +27,8 @@
          "instructions":"Use twice daily directly following ALKIM ME Vitamin C. Apply to face, neck and decollete as well as the tops of the hands. May also be used as an eye serum.",
          "name":"Serum",
          "price":60,
-         "priority_level":3
+         "priority":3,
+               "logo_name": ""
       },
       {  
          "have":false,
@@ -34,7 +37,8 @@
          "instructions":"Apply 3-5 drops once or twice daily directly following ALKIM ME Serum. May also be used alone on freshly washed skin twice daily. Apply to face, neck, decollete and tops of hands. ",
          "name":"Elixer",
          "price":80,
-         "priority_level":4
+         "priority":4,
+               "logo_name": ""
       }
    ]
 }
