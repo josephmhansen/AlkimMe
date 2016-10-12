@@ -9,6 +9,13 @@
 import Foundation
 
 class RoutineController {
+    
+    static let sharedController = RoutineController()
+    //research options to set a default string value for morning and evening times
+    var morningFireTime:NSDate?
+    var eveningFireTime:NSDate?
+    
+    
     func createRoutineFromCurrentShelf(){}
     func startRoutine(){}
     func stopRoutine(){}

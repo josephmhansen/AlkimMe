@@ -26,8 +26,9 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
 //        print(ProductController.sharedController.products.count)
-        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
         ProductController.sharedController.fetchedResultsController?.delegate = self
+        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
+        
     }
 
     override func didReceiveMemoryWarning() {

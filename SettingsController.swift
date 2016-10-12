@@ -31,7 +31,7 @@ class SettingsController {
     func loadFirstTime() {
         if firstLaunch == true {
             ProductController.sharedController.createAllProducts()
-//            firstLaunch = false
+            firstLaunch = false
             
             saveSettings()
         }

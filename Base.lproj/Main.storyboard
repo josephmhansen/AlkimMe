@@ -123,13 +123,13 @@
         <!--Routine-->
         <scene sceneID="Aiy-To-clT">
             <objects>
-                <tableViewController id="ZeR-jn-m1r" sceneMemberID="viewController">
+                <tableViewController id="ZeR-jn-m1r" customClass="RoutineTimesTableViewController" customModule="AlkimMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Sr-Z9-OMp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="Section-1" id="wAc-qd-c11">
+                            <tableViewSection headerTitle="Morning" id="wAc-qd-c11">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="229" id="7ew-B9-I3O">
                                         <rect key="frame" x="0.0" y="92" width="375" height="229"/>
@@ -146,7 +146,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:30 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="de0-IR-w8L">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -165,13 +165,16 @@
                                         <rect key="frame" x="0.0" y="321" width="375" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QWa-ow-hHY" id="1Wz-Sa-37R">
-                                            <frame key="frameInset" width="375" height="121"/>
+                                            <frame key="frameInset" width="375" height="121.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ixg-Ec-Pr5">
                                                     <date key="date" timeIntervalSinceReferenceDate="497748402.69303697">
                                                         <!--2016-10-09 23:26:42 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="morningDateChanged:" destination="ZeR-jn-m1r" eventType="valueChanged" id="ABQ-Gf-Xtx"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -184,13 +187,13 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Section-2" id="ijf-SR-T69">
+                            <tableViewSection headerTitle="Evening" id="ijf-SR-T69">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="229" id="8wD-JE-ucl">
                                         <rect key="frame" x="0.0" y="471" width="375" height="229"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8wD-JE-ucl" id="YQc-EA-4bc">
-                                            <frame key="frameInset" width="375" height="228"/>
+                                            <frame key="frameInset" width="375" height="228.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3g-IA-yQN">
@@ -200,8 +203,8 @@
                                                                 <constraint firstAttribute="width" constant="170" id="4IG-wq-tdI"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:30 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiD-WE-E4y">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:30 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiD-WE-E4y">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -220,13 +223,16 @@
                                         <rect key="frame" x="0.0" y="700" width="375" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yma-Q7-Hsj" id="nhh-5I-iNs">
-                                            <frame key="frameInset" width="375" height="121"/>
+                                            <frame key="frameInset" width="375" height="121.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="XLY-hZ-Axf">
                                                     <date key="date" timeIntervalSinceReferenceDate="497748402.69303697">
                                                         <!--2016-10-09 23:26:42 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="eveningDateChanged:" destination="ZeR-jn-m1r" eventType="valueChanged" id="eob-E4-8Pu"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -252,6 +258,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="eveningTimeLabel" destination="GiD-WE-E4y" id="Qcn-4j-ysu"/>
+                        <outlet property="eveningTimePicker" destination="XLY-hZ-Axf" id="Mv7-JI-Mqx"/>
+                        <outlet property="eveningTimePickerCell" destination="yma-Q7-Hsj" id="TfP-5X-Pb0"/>
+                        <outlet property="morningTimeLabel" destination="de0-IR-w8L" id="hLc-k9-Gwf"/>
+                        <outlet property="morningTimePicker" destination="Ixg-Ec-Pr5" id="Kxr-sp-pdh"/>
+                        <outlet property="morningTimePickerCell" destination="QWa-ow-hHY" id="EFW-Ct-MIW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q42-MF-mOq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

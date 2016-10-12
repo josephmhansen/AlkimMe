@@ -18,7 +18,7 @@ class ProductController {
     
     
     
-    var products: [Product] {
+    var products: [Product] = [] /*{
         let request: NSFetchRequest<Product> = Product.fetchRequest()
         let moc = CoreDataStack.context
                 do {
@@ -27,7 +27,7 @@ class ProductController {
                 } catch {
                     return []
                 }
-    }
+    }*/
         /*
         let products = try? CoreDataStack.context.fetch(request) as [Product]
         
@@ -38,10 +38,10 @@ class ProductController {
     init() {
         
         let request: NSFetchRequest<Product> = Product.fetchRequest()
-//        let sortDescriptor1 = NSSortDescriptor(key: "priority", ascending: false)
+        let sortDescriptor1 = NSSortDescriptor(key: "priority", ascending: false)
         let sortDescriptor2 = NSSortDescriptor(key: "have", ascending: false)
         
-        request.sortDescriptors = [sortDescriptor2]
+        request.sortDescriptors = [sortDescriptor1, sortDescriptor2]
         
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "have", cacheName: nil)
         
@@ -89,6 +89,7 @@ class ProductController {
     
     func isHaveValueChecked(product: Product) {
         product.have = !product.have
+        saveToPersistentStorage()
     }
     
     func saveToPersistentStorage() {
