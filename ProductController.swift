@@ -39,7 +39,7 @@ class ProductController {
         
         let request: NSFetchRequest<Product> = Product.fetchRequest()
         let sortDescriptor1 = NSSortDescriptor(key: "priority", ascending: false)
-        let sortDescriptor2 = NSSortDescriptor(key: "have", ascending: false)
+        let sortDescriptor2 = NSSortDescriptor(key: "have", ascending: true)
         
         request.sortDescriptors = [sortDescriptor1, sortDescriptor2]
         
@@ -83,6 +83,7 @@ class ProductController {
             for product in products {
                 _ = product
                 saveToPersistentStorage()
+                try? fetchedResultsController?.performFetch()
             }
         }
     }
