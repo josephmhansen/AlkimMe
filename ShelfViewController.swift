@@ -18,7 +18,7 @@ class ShelfViewController: UIViewController, ShelfCollectionViewDelegate {
             
         }
 
-        print(ProductController.sharedController.products)
+//        print(ProductController.sharedController.products)
     }
 
     override func didReceiveMemoryWarning() {

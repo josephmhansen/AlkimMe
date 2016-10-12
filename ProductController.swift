@@ -14,11 +14,11 @@ class ProductController {
     
     static let sharedController = ProductController()
     
-    let fetchedResultsController: NSFetchedResultsController<Product>?
+//    let fetchedResultsController: NSFetchedResultsController<Product>?
     
     
     
-    var products: [Product] = [] /*{
+    var products: [Product] {
         let request: NSFetchRequest<Product> = Product.fetchRequest()
         let moc = CoreDataStack.context
                 do {
@@ -27,7 +27,22 @@ class ProductController {
                 } catch {
                     return []
                 }
-    }*/
+    }
+    
+    var sortedProducts: [[Product]] {
+        var productsUserHas: [Product] = []
+        var productsUserNeeds: [Product] = []
+        for product in products {
+            if product.have == true {
+                productsUserHas.append(product)
+            } else {
+                productsUserNeeds.append(product)
+            }
+        }
+        return [productsUserHas, productsUserNeeds]
+    }
+    
+    
         /*
         let products = try? CoreDataStack.context.fetch(request) as [Product]
         
@@ -35,6 +50,7 @@ class ProductController {
         
     } */
     
+    /*
     init() {
         
         let request: NSFetchRequest<Product> = Product.fetchRequest()
@@ -45,11 +61,12 @@ class ProductController {
         
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "have", cacheName: nil)
         
-        _ = try? fetchedResultsController?.performFetch()
-
+        let results = try? fetchedResultsController?.performFetch()
+        
+        
         
     }
-    
+    */
     
     
     
@@ -83,7 +100,7 @@ class ProductController {
             for product in products {
                 _ = product
                 saveToPersistentStorage()
-                try? fetchedResultsController?.performFetch()
+                
             }
         }
     }

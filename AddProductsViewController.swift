@@ -9,15 +9,15 @@
 import UIKit
 import CoreData
 
-class AddProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, AddProductTableViewCellDelegate {
+class AddProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddProductTableViewCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     func haveProductValueChanged(sender: AddProductsTableViewCell) {
-        guard let indexPath = tableView.indexPath(for: sender),
-            let product = ProductController.sharedController.fetchedResultsController?.object(at: indexPath)  else { return }
+        guard let indexPath = tableView.indexPath(for: sender) else { return }
+            let product = ProductController.sharedController.sortedProducts[indexPath.row]
         
-        product.have = !product.have
-        sender.updateHaveButton(have: product.have)
+//        product.have = !product.have
+//        sender.updateHaveButton(have: product.have)
         
     }
     
@@ -26,8 +26,10 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
 //        print(ProductController.sharedController.products.count)
-        ProductController.sharedController.fetchedResultsController?.delegate = self
-        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
+//        ProductController.sharedController.fetchedResultsController?.delegate = self
+//        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
+        
+        
         
     }
 
@@ -36,84 +38,46 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = ProductController.sharedController.fetchedResultsController?.sections else { return 0 }
-        return sections[section].numberOfObjects
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return ProductController.sharedController.sortedProducts.count
+        
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = ProductController.sharedController.fetchedResultsController?.sections else { return 0 }
-        return sections.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ProductController.sharedController.sortedProducts[section].count
+        
     }
+    
+
     
    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let sections = ProductController.sharedController.fetchedResultsController?.sections,
-            let index = Int(sections[section].name) else { return nil }
+        var title: String = ""
         
-        if index == 1 {
-            return "Have"
-        } else {
-            return "Need"
+        switch section {
+        case 0:
+            title = "Have"
+        case 1:
+            title = "Need"
+        
+        default:
+            break
         }
-        
+        return title
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? AddProductsTableViewCell,
-            let product = ProductController.sharedController.fetchedResultsController?.object(at: indexPath) else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? AddProductsTableViewCell else { return UITableViewCell() }
+            let product = ProductController.sharedController.sortedProducts[indexPath.section][indexPath.row]
+//            let product = ProductController.sharedController.fetchedResultsController?.object(at: indexPath) else { return UITableViewCell() }
         
         cell.updateWithProduct(product: product)
         cell.delegate = self
         return cell
     }
 
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case.delete:
-            guard let indexPath = indexPath else { return }
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        case.insert:
-            guard let newIndexPath = newIndexPath else { return }
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-            
-        case.move:
-            guard let indexPath = indexPath, let newIndexPath = newIndexPath else { return }
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.tableView.insertRows(at: [newIndexPath], with: .automatic)
-            
-        case.update:
-            guard let indexPath = indexPath else { return }
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-        }
-
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        let indexSet = NSIndexSet(index: sectionIndex)
         
-        switch type {
-        case.delete:
-            tableView.deleteSections(indexSet as IndexSet, with: .bottom)
-            
-        case.insert:
-            tableView.insertSections(indexSet as IndexSet, with: .bottom)
-            
-        default:
-            break
-            
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-    
     /*
     // MARK: - Navigation
 
