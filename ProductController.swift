@@ -16,10 +16,13 @@ class ProductController {
     
 //    let fetchedResultsController: NSFetchedResultsController<Product>?
     
-    
+    let prioritySortDescriptor = NSSortDescriptor(key: "priority", ascending: true)
+    let haveSortDescriptor = NSSortDescriptor(key: "have", ascending: true)
     
     var products: [Product] {
         let request: NSFetchRequest<Product> = Product.fetchRequest()
+        request.sortDescriptors = [prioritySortDescriptor, haveSortDescriptor]
+        
         let moc = CoreDataStack.context
                 do {
                     let result = try moc.fetch(request)
@@ -32,6 +35,7 @@ class ProductController {
     var sortedProducts: [[Product]] {
         var productsUserHas: [Product] = []
         var productsUserNeeds: [Product] = []
+        
         for product in products {
             if product.have == true {
                 productsUserHas.append(product)
@@ -43,30 +47,7 @@ class ProductController {
     }
     
     
-        /*
-        let products = try? CoreDataStack.context.fetch(request) as [Product]
-        
-        return self.products ?? []
-        
-    } */
-    
-    /*
-    init() {
-        
-        let request: NSFetchRequest<Product> = Product.fetchRequest()
-        let sortDescriptor1 = NSSortDescriptor(key: "priority", ascending: false)
-        let sortDescriptor2 = NSSortDescriptor(key: "have", ascending: true)
-        
-        request.sortDescriptors = [sortDescriptor1, sortDescriptor2]
-        
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "have", cacheName: nil)
-        
-        let results = try? fetchedResultsController?.performFetch()
-        
-        
-        
-    }
-    */
+  
     
     
     
@@ -81,19 +62,14 @@ class ProductController {
                 return
         }
         
-        
-        
         let products = productDictionaries.flatMap { Product(dictionary: $0) }
-//        self.products = products
         completion(products)
-        
-        
+
     }
     
     
     
-    
-    
+
     func createAllProducts() {
         
         serializeJSON { (products) in
@@ -119,5 +95,7 @@ class ProductController {
     }
     
 }
+
+
 
 
