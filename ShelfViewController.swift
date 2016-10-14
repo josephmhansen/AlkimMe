@@ -14,11 +14,14 @@ class ShelfViewController: UIViewController, ShelfCollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ProductController.sharedController.serializeJSON { (_) in
-            
+        let firstRun = UserDefaults.standard.bool(forKey: "firstRun") as Bool
+        if !firstRun {
+            ProductController.sharedController.serializeJSON({ (products) in
+                ProductController.sharedController.saveToPersistentStorage()
+            })
+            UserDefaults.standard.set(true, forKey: "firstRun")
         }
-
-//        print(ProductController.sharedController.products)
+        
     }
 
     override func didReceiveMemoryWarning() {
