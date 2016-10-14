@@ -14,28 +14,28 @@ class SettingsController {
     
     // var launchedBefore: Bool = UserDefaults.standard.bool(forKey: "launchedBefore")
     
-    var firstLaunch: Bool = true
-    
-    func saveSettings() {
-        UserDefaults.standard.set(firstLaunch, forKey: "firstLaunch")
-    }
-    
-    func loadSettings() {
-        
-        guard let firstLaunch = UserDefaults.standard.object(forKey: "firstLaunch") as? Bool else { return }
-        self.firstLaunch = firstLaunch
-        
-        
-    }
-    
-    func loadFirstTime() {
-        if firstLaunch == true {
-            ProductController.sharedController.createAllProducts()
-            firstLaunch = false
-            
-            saveSettings()
-        }
-    }
+//    var firstLaunch: Bool = true
+//    
+//    func saveSettings() {
+//        UserDefaults.standard.set(firstLaunch, forKey: "firstLaunch")
+//    }
+//    
+//    func loadSettings() {
+//        
+//        guard let firstLaunch = UserDefaults.standard.object(forKey: "firstLaunch") as? Bool else { return }
+//        self.firstLaunch = firstLaunch
+//        
+//        
+//    }
+//    
+//    func loadFirstTime() {
+//        if firstLaunch == true {
+//            ProductController.sharedController.createAllProducts()
+//            firstLaunch = false
+//            
+//            saveSettings()
+//        }
+//    }
     
     
  /*    if launchedBefore = true {
