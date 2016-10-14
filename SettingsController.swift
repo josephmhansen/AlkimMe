@@ -37,7 +37,6 @@ class SettingsController {
         }
     }
     
-    
     func serializeJSON(_ completion: (_ products: [Product]) -> Void) {
         let filePath = Bundle.main.path(forResource: "alkimme", ofType: "json")!
         
@@ -56,9 +55,6 @@ class SettingsController {
         
     }
     
-    
-    
-    
     func createAllProducts() {
         
         serializeJSON { (products) in
@@ -69,14 +65,5 @@ class SettingsController {
             }
         }
     }
-    
-    
-//    if launchedBefore = true {
-//    print("Not first launch.")
-//    }
-//    else {
-//    print("First launch, setting NSUserDefault.")
-//    UserDefaults.standard.bool(true, forKey: "launchedBefore")
-//    }
  
 }

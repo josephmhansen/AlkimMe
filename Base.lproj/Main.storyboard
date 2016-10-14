@@ -299,41 +299,39 @@
                                             <rect key="frame" x="0.0" y="0.0" width="159" height="213"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Nir-lo-yCz">
+                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Nir-lo-yCz">
+                                                    <frame key="frameInset" width="1000" height="1000"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21n-2M-JFf">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21n-2M-JFf">
+                                                            <frame key="frameInset" width="159" height="50"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3OQ-O4-Qcv">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3OQ-O4-Qcv">
+                                                                    <frame key="frameInset" width="50" height="50"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="3OQ-O4-Qcv" secondAttribute="height" multiplier="1:1" id="ihF-d1-ezD"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ua-zh-PHG">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ua-zh-PHG">
+                                                                    <frame key="frameInset" minX="50" width="109" height="50"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kPU-UE-4BC">
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="177" id="oQy-LW-5IM"/>
-                                                                <constraint firstAttribute="width" constant="159" id="spf-Q2-CFb"/>
-                                                            </constraints>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kPU-UE-4BC">
+                                                            <frame key="frameInset" minY="56" width="159" height="177"/>
                                                         </imageView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="kPU-UE-4BC" firstAttribute="top" secondItem="21n-2M-JFf" secondAttribute="bottom" id="T46-pH-W9u"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Nir-lo-yCz" secondAttribute="trailing" id="EPb-CR-Uxm"/>
-                                            <constraint firstItem="Nir-lo-yCz" firstAttribute="top" secondItem="qUZ-z1-zBu" secondAttribute="top" id="qDU-M3-Vbv"/>
-                                            <constraint firstItem="Nir-lo-yCz" firstAttribute="leading" secondItem="qUZ-z1-zBu" secondAttribute="leading" id="ssI-lj-3qP"/>
-                                            <constraint firstAttribute="bottom" secondItem="Nir-lo-yCz" secondAttribute="bottom" id="wT2-NN-Lh4"/>
-                                        </constraints>
+                                        <connections>
+                                            <outlet property="logoImageView" destination="3OQ-O4-Qcv" id="XGX-wI-MOE"/>
+                                            <outlet property="productImageView" destination="kPU-UE-4BC" id="nTq-zT-wtI"/>
+                                            <outlet property="productNameLabel" destination="4Ua-zh-PHG" id="P95-v8-Hgf"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
