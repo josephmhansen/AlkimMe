@@ -28,12 +28,21 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 //        print(ProductController.sharedController.products.count)
 //        ProductController.sharedController.fetchedResultsController?.delegate = self
 //        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
         tableView.reloadData()
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        self.tableView.reloadSections(sections as IndexSet, with: .automatic)
     }
 
     override func didReceiveMemoryWarning() {

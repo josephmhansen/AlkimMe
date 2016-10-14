@@ -43,6 +43,8 @@ class ProductController {
                 productsUserNeeds.append(product)
             }
         }
+        print(productsUserHas.count)
+        print(productsUserNeeds.count)
         return [productsUserHas, productsUserNeeds]
     }
     
