@@ -40,9 +40,8 @@ class AddProductsTableViewCell: UITableViewCell {
     }
     
     func updateHaveButton(have: Bool) {
-        guard let product = product else { return }
         
-        if product.have == true {
+        if have == true {
             haveProduct.setImage(#imageLiteral(resourceName: "complete"), for: .normal)
         } else {
             haveProduct.setImage(#imageLiteral(resourceName: "incomplete"), for: .normal)

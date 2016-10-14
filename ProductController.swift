@@ -14,38 +14,55 @@ class ProductController {
     
     static let sharedController = ProductController()
     
-//    let fetchedResultsController: NSFetchedResultsController<Product>?
+    let fetchedResultsController: NSFetchedResultsController<Product>
     
-    let prioritySortDescriptor = NSSortDescriptor(key: "priority", ascending: true)
-    let haveSortDescriptor = NSSortDescriptor(key: "have", ascending: true)
     
-    var products: [Product] {
+//    let prioritySortDescriptor = NSSortDescriptor(key: "priority", ascending: true)
+//    let haveSortDescriptor = NSSortDescriptor(key: "have", ascending: true)
+    
+//    var products: [Product] {
+//        let request: NSFetchRequest<Product> = Product.fetchRequest()
+//        request.sortDescriptors = [prioritySortDescriptor, haveSortDescriptor]
+//        
+//        let moc = CoreDataStack.context
+//                do {
+//                    let result = try moc.fetch(request)
+//                    return result
+//                } catch {
+//                    return []
+//                }
+//    }
+    
+//    var sortedProducts: [[Product]] {
+//        var productsUserHas: [Product] = []
+//        var productsUserNeeds: [Product] = []
+//        
+//        for product in products {
+//            if product.have == true {
+//                productsUserHas.append(product)
+//            } else {
+//                productsUserNeeds.append(product)
+//            }
+//        }
+//        print(productsUserHas.count)
+//        print(productsUserNeeds.count)
+//        return [productsUserHas, productsUserNeeds]
+//    }
+    
+    
+    init() {
         let request: NSFetchRequest<Product> = Product.fetchRequest()
-        request.sortDescriptors = [prioritySortDescriptor, haveSortDescriptor]
+        let prioritySortDescriptor = NSSortDescriptor(key: "priority", ascending: true)
+        let haveSortDescriptor = NSSortDescriptor(key: "have", ascending: true)
+        request.sortDescriptors = [haveSortDescriptor, prioritySortDescriptor]
         
-        let moc = CoreDataStack.context
-                do {
-                    let result = try moc.fetch(request)
-                    return result
-                } catch {
-                    return []
-                }
-    }
-    
-    var sortedProducts: [[Product]] {
-        var productsUserHas: [Product] = []
-        var productsUserNeeds: [Product] = []
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "have", cacheName: nil)
         
-        for product in products {
-            if product.have == true {
-                productsUserHas.append(product)
-            } else {
-                productsUserNeeds.append(product)
-            }
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            NSLog("Error with the initial fetch of the fetchedResultsController, \(error.localizedDescription)")
         }
-        print(productsUserHas.count)
-        print(productsUserNeeds.count)
-        return [productsUserHas, productsUserNeeds]
     }
     
     
@@ -66,7 +83,9 @@ class ProductController {
         
         let products = productDictionaries.flatMap { Product(dictionary: $0) }
         completion(products)
-
+        
+        saveToPersistentStorage()
+        
     }
     
     

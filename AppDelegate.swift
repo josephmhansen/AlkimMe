@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        SettingsController.sharedController.loadSettings()
+        SettingsController.sharedController.loadSettings()
         
-//        SettingsController.sharedController.loadFirstTime()
+        SettingsController.sharedController.loadFirstTime()
         
         
         return true

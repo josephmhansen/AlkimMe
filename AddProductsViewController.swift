@@ -9,14 +9,15 @@
 import UIKit
 import CoreData
 
-class AddProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddProductTableViewCellDelegate {
+class AddProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddProductTableViewCellDelegate, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     func haveProductValueChanged(sender: AddProductsTableViewCell) {
-        guard let product = sender.product else { return }
+        guard let indexPath = tableView.indexPath(for: sender) else { return }
+        let product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
         ProductController.sharedController.isHaveValueChecked(product: product)
-        sender.updateWithProduct(product: product)
-        guard tableView.indexPath(for: sender) != nil else { return }
+        
+        
         
         
 //        product.have = !product.have
@@ -30,33 +31,36 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         
         
-//        print(ProductController.sharedController.products.count)
-//        ProductController.sharedController.fetchedResultsController?.delegate = self
+
+        ProductController.sharedController.fetchedResultsController.delegate = self
 //        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
-        tableView.reloadData()
+//        tableView.reloadData()
         
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = NSIndexSet(indexesIn: range)
-        self.tableView.reloadSections(sections as IndexSet, with: .automatic)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return ProductController.sharedController.sortedProducts.count
+        guard let sections = ProductController.sharedController.fetchedResultsController.sections else {
+            fatalError()
+            
+        }
+       return sections.count
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ProductController.sharedController.sortedProducts[section].count
+        guard let sections = ProductController.sharedController.fetchedResultsController.sections else {
+            fatalError()
+            
+        }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
         
     }
     
@@ -65,29 +69,79 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var title: String = ""
+        guard let sections = ProductController.sharedController.fetchedResultsController.sections,
+            let index = Int(sections[section].name) else { return nil }
         
-        switch section {
-        case 0:
-            title = "Have"
-        case 1:
-            title = "Need"
-        
-        default:
-            break
+        if index == 1 {
+            return "Have"
+        } else {
+            return "Need"
         }
-        return title
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? AddProductsTableViewCell else { return UITableViewCell() }
-            let product = ProductController.sharedController.sortedProducts[indexPath.section][indexPath.row]
-//            let product = ProductController.sharedController.fetchedResultsController?.object(at: indexPath) else { return UITableViewCell() }
-        cell.product = product
+//            let product = ProductController.sharedController.sortedProducts[indexPath.section][indexPath.row]
+            let product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
+//        cell.product = product
         
         cell.updateWithProduct(product: product)
         cell.delegate = self
         return cell
+    }
+    
+    
+    
+    //=============================================================
+    // MARK: 
+    //=============================================================
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+            
+        case .delete:
+            guard let indexPath = indexPath else { return }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        case .insert:
+            guard let newIndexPath = newIndexPath else { return }
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .move:
+            guard let indexPath = indexPath,
+                let newIndexPath = newIndexPath
+                else { return }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .update:
+            guard let indexPath = indexPath,
+                let newIndexPath = newIndexPath
+                else { return }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        switch type {
+            
+        case .delete:
+            tableView.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .automatic)
+        case .insert:
+            tableView.insertSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .automatic)
+        default:
+            break
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+        tableView.endUpdates()
     }
 
         
