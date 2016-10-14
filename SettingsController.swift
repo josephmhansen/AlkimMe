@@ -30,10 +30,43 @@ class SettingsController {
     
     func loadFirstTime() {
         if firstLaunch == true {
-            ProductController.sharedController.createAllProducts()
+            createAllProducts()
             firstLaunch = false
             
             saveSettings()
+        }
+    }
+    
+    
+    func serializeJSON(_ completion: (_ products: [Product]) -> Void) {
+        let filePath = Bundle.main.path(forResource: "alkimme", ofType: "json")!
+        
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)),
+            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+            let jsonDictionary = json as? [String:AnyObject],
+            let productDictionaries = jsonDictionary["products"] as? [[String:AnyObject]] else {
+                print("Unable to serialize JSON.")
+                return
+        }
+        
+        let products = productDictionaries.flatMap { Product(dictionary: $0) }
+        completion(products)
+        
+        ProductController.sharedController.saveToPersistentStorage()
+        
+    }
+    
+    
+    
+    
+    func createAllProducts() {
+        
+        serializeJSON { (products) in
+            for product in products {
+                _ = product
+                ProductController.sharedController.saveToPersistentStorage()
+                
+            }
         }
     }
     
