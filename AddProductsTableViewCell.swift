@@ -34,6 +34,7 @@ class AddProductsTableViewCell: UITableViewCell {
     @IBAction func haveProductBoxChecked(_ sender: AnyObject) {
         if let delegate = delegate {
             delegate.haveProductValueChanged(sender: self)
+            
         }
         
     }

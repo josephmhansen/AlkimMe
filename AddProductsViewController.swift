@@ -13,8 +13,11 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var tableView: UITableView!
     
     func haveProductValueChanged(sender: AddProductsTableViewCell) {
-        guard let indexPath = tableView.indexPath(for: sender) else { return }
-            let product = ProductController.sharedController.sortedProducts[indexPath.row]
+        guard let product = sender.product else { return }
+        ProductController.sharedController.isHaveValueChecked(product: product)
+        sender.updateWithProduct(product: product)
+        guard tableView.indexPath(for: sender) != nil else { return }
+        
         
 //        product.have = !product.have
 //        sender.updateHaveButton(have: product.have)
@@ -28,7 +31,7 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
 //        print(ProductController.sharedController.products.count)
 //        ProductController.sharedController.fetchedResultsController?.delegate = self
 //        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
-        
+        tableView.reloadData()
         
         
     }
@@ -71,6 +74,7 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? AddProductsTableViewCell else { return UITableViewCell() }
             let product = ProductController.sharedController.sortedProducts[indexPath.section][indexPath.row]
 //            let product = ProductController.sharedController.fetchedResultsController?.object(at: indexPath) else { return UITableViewCell() }
+        cell.product = product
         
         cell.updateWithProduct(product: product)
         cell.delegate = self
