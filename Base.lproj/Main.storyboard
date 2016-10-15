@@ -132,7 +132,7 @@
                             <tableViewSection headerTitle="Morning" id="wAc-qd-c11">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="229" id="7ew-B9-I3O">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="229"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="229"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7ew-B9-I3O" id="KhC-Cc-hJb">
                                             <frame key="frameInset" width="375" height="228.5"/>
@@ -162,7 +162,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="122" id="QWa-ow-hHY">
-                                        <rect key="frame" x="0.0" y="321" width="375" height="122"/>
+                                        <rect key="frame" x="0.0" y="301" width="375" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QWa-ow-hHY" id="1Wz-Sa-37R">
                                             <frame key="frameInset" width="375" height="121.5"/>
@@ -190,7 +190,7 @@
                             <tableViewSection headerTitle="Evening" id="ijf-SR-T69">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="229" id="8wD-JE-ucl">
-                                        <rect key="frame" x="0.0" y="471" width="375" height="229"/>
+                                        <rect key="frame" x="0.0" y="451" width="375" height="229"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8wD-JE-ucl" id="YQc-EA-4bc">
                                             <frame key="frameInset" width="375" height="228.5"/>
@@ -220,7 +220,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="122" id="yma-Q7-Hsj">
-                                        <rect key="frame" x="0.0" y="700" width="375" height="122"/>
+                                        <rect key="frame" x="0.0" y="680" width="375" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yma-Q7-Hsj" id="nhh-5I-iNs">
                                             <frame key="frameInset" width="375" height="121.5"/>
@@ -270,92 +270,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q42-MF-mOq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="761" y="33"/>
-        </scene>
-        <!--Shelf-->
-        <scene sceneID="MTg-Cg-f5y">
-            <objects>
-                <viewController id="5z7-JL-Nbd" customClass="ShelfViewController" customModule="AlkimMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Fyb-sf-XmW"/>
-                        <viewControllerLayoutGuide type="bottom" id="UjY-07-rId"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PEe-Y8-RBb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oMg-kr-Gm5">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eeu-rI-kad">
-                                    <size key="itemSize" width="159" height="213"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shelfCell" id="qUZ-z1-zBu" customClass="ShelfCollectionViewCell" customModule="AlkimMe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="159" height="213"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="159" height="213"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Nir-lo-yCz">
-                                                    <frame key="frameInset" width="1000" height="1000"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21n-2M-JFf">
-                                                            <frame key="frameInset" width="159" height="50"/>
-                                                            <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3OQ-O4-Qcv">
-                                                                    <frame key="frameInset" width="50" height="50"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" secondItem="3OQ-O4-Qcv" secondAttribute="height" multiplier="1:1" id="ihF-d1-ezD"/>
-                                                                    </constraints>
-                                                                </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ua-zh-PHG">
-                                                                    <frame key="frameInset" minX="50" width="109" height="50"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kPU-UE-4BC">
-                                                            <frame key="frameInset" minY="56" width="159" height="177"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                        </view>
-                                        <connections>
-                                            <outlet property="logoImageView" destination="3OQ-O4-Qcv" id="XGX-wI-MOE"/>
-                                            <outlet property="productImageView" destination="kPU-UE-4BC" id="nTq-zT-wtI"/>
-                                            <outlet property="productNameLabel" destination="4Ua-zh-PHG" id="P95-v8-Hgf"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="UjY-07-rId" firstAttribute="top" secondItem="oMg-kr-Gm5" secondAttribute="bottom" id="9Ge-mb-FSg"/>
-                            <constraint firstItem="oMg-kr-Gm5" firstAttribute="top" secondItem="Fyb-sf-XmW" secondAttribute="bottom" id="9gf-aD-VVm"/>
-                            <constraint firstItem="oMg-kr-Gm5" firstAttribute="leading" secondItem="PEe-Y8-RBb" secondAttribute="leadingMargin" id="D6i-Y2-Jd2"/>
-                            <constraint firstItem="oMg-kr-Gm5" firstAttribute="trailing" secondItem="PEe-Y8-RBb" secondAttribute="trailingMargin" id="kBl-Oi-fZc"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Shelf" id="5wl-aC-fRJ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fQj-qs-EhD">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="gfq-M4-Kr0" kind="show" identifier="addProductSegue" id="o0I-a8-DSx"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ej0-b4-ZMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="760.79999999999995" y="-659.82008995502258"/>
         </scene>
         <!--Add Products-->
         <scene sceneID="o0h-El-5jh">
@@ -447,19 +361,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b3y-Zo-QJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1477.5999999999999" y="-660.71964017991013"/>
+            <point key="canvasLocation" x="1535" y="-895"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2Y3-cC-Rkv">
             <objects>
                 <tabBarController id="6B8-cG-3eO" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="cSH-3B-vtK">
+                    <tabBar key="tabBar" contentMode="left" selectionIndicatorImage="Shelf" id="cSH-3B-vtK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="1NG-lC-8eA" kind="relationship" relationship="viewControllers" id="bug-n3-Pvi"/>
+                        <segue destination="CSy-oZ-iYu" kind="relationship" relationship="viewControllers" id="CyL-rQ-5Ov"/>
                         <segue destination="lYY-Hn-Jzb" kind="relationship" relationship="viewControllers" id="Jsh-gu-1gt"/>
                         <segue destination="oaQ-wz-ftj" kind="relationship" relationship="viewControllers" id="nsj-u0-hNI"/>
                     </connections>
@@ -467,25 +381,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4o-7r-8LC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1518" y="33"/>
-        </scene>
-        <!--Shelf-->
-        <scene sceneID="LUm-9U-Rzb">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1NG-lC-8eA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shelf" image="Shelf" id="614-bj-Zuh"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hcj-Gz-dPV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="5z7-JL-Nbd" kind="relationship" relationship="rootViewController" id="2ME-F1-afy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9m8-ub-5vs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-178.40000000000001" y="-659.82008995502258"/>
         </scene>
         <!--Routine-->
         <scene sceneID="zJC-Wu-JBp">
@@ -505,6 +400,101 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3eU-5m-JlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-178" y="33"/>
+        </scene>
+        <!--Shelf Collection View Controller-->
+        <scene sceneID="xdd-Oy-bS4">
+            <objects>
+                <collectionViewController id="SDN-KA-6pl" customClass="ShelfCollectionViewController" customModule="AlkimMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="T5S-MR-fwQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mAy-yK-uTC">
+                            <size key="itemSize" width="175" height="268"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productShelfCell" id="284-KG-4dT" customClass="ShelfCollectionViewCell" customModule="AlkimMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="175" height="268"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="175" height="268"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="equalSpacing" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-hM-zal">
+                                            <frame key="frameInset" minY="8" width="1000" height="1000"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ZQ-KC-lfE">
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3OQ-O4-Qcv">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="3OQ-O4-Qcv" secondAttribute="height" multiplier="1:1" id="ihF-d1-ezD"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ua-zh-PHG">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QbS-2U-M2C"/>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="QbS-2U-M2C" firstAttribute="top" secondItem="9ZQ-KC-lfE" secondAttribute="bottom" constant="7" id="E2i-ug-irM"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="9ZQ-KC-lfE" firstAttribute="centerX" secondItem="284-KG-4dT" secondAttribute="centerX" id="lUf-9B-2GH"/>
+                                    <constraint firstAttribute="topMargin" secondItem="9ZQ-KC-lfE" secondAttribute="top" id="m3v-uS-GlX"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="logoImageView" destination="3OQ-O4-Qcv" id="gTF-Ru-OAQ"/>
+                                    <outlet property="productImageView" destination="QbS-2U-M2C" id="dD5-Hp-8mh"/>
+                                    <outlet property="productNameLabel" destination="4Ua-zh-PHG" id="I2m-xt-gcE"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="SDN-KA-6pl" id="Uku-4q-bFE"/>
+                            <outlet property="delegate" destination="SDN-KA-6pl" id="5wo-k8-qzS"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="GeF-Um-1jx">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0Pi-HU-7Gq">
+                            <connections>
+                                <segue destination="gfq-M4-Kr0" kind="show" id="h9D-od-CNN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Kj-y4-AVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="698" y="-894"/>
+        </scene>
+        <!--Shelf-->
+        <scene sceneID="Etu-PB-Ydk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CSy-oZ-iYu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shelf" selectedImage="Shelf" id="rpF-ZN-Diz"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YiR-QF-JGY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SDN-KA-6pl" kind="relationship" relationship="rootViewController" id="MJu-Lm-vrO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B3b-BH-im4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-178" y="-893"/>
         </scene>
     </scenes>
     <resources>
