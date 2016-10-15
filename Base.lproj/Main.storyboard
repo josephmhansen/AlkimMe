@@ -37,7 +37,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JcE-YO-OfT" id="i9f-7X-JAe">
-                                            <frame key="frameInset" width="343" height="74"/>
+                                            <frame key="frameInset" width="343" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Of-cs-pyw">
@@ -85,7 +85,7 @@
                         <barButtonItem key="rightBarButtonItem" image="routine_settings" id="s3Q-v3-3eU">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="rok-ve-vsZ" kind="show" id="MaT-eO-iEi"/>
+                                <segue destination="rok-ve-vsZ" kind="show" id="fsc-cR-Gat"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -123,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gx2-Fa-7LT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-161" y="1291"/>
+            <point key="canvasLocation" x="-178" y="804"/>
         </scene>
         <!--Routine Times Table View Controller-->
         <scene sceneID="q2A-5l-qSr">
@@ -134,13 +134,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="Section-1" id="feP-tT-3wc">
+                            <tableViewSection id="feP-tT-3wc">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iQp-Rw-iXV" userLabel="MorningLabelCell">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iQp-Rw-iXV" id="r4Z-C3-Wkx">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiO-fL-bsH">
@@ -160,10 +160,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="169" id="910-6E-WoO" userLabel="MorningSetTimeCell">
-                                        <rect key="frame" x="0.0" y="136" width="375" height="169"/>
+                                        <rect key="frame" x="0.0" y="108" width="375" height="169"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="910-6E-WoO" id="F1I-ge-86Y">
-                                            <frame key="frameInset" width="375" height="168"/>
+                                            <frame key="frameInset" width="375" height="168.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhm-hs-PUX">
@@ -190,16 +190,19 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="108" id="Kxf-co-QhP" userLabel="MorningTimePickerCell">
-                                        <rect key="frame" x="0.0" y="305" width="375" height="108"/>
+                                        <rect key="frame" x="0.0" y="277" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kxf-co-QhP" id="eCC-ZM-dw9">
-                                            <frame key="frameInset" width="375" height="107"/>
+                                            <frame key="frameInset" width="375" height="107.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8c8-n8-1RU">
                                                     <date key="date" timeIntervalSinceReferenceDate="498260944.88379401">
                                                         <!--2016-10-15 21:49:04 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="morningDateChanged:" destination="rok-ve-vsZ" eventType="valueChanged" id="cDb-yc-scv"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -211,10 +214,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="k3t-MZ-dkf" userLabel="EveningLabelCell">
-                                        <rect key="frame" x="0.0" y="413" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="385" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k3t-MZ-dkf" id="lQk-zZ-Wur">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kmF-Nt-IKY">
@@ -234,10 +237,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="169" id="hIR-MS-JdQ" userLabel="EveningSetTimeCell">
-                                        <rect key="frame" x="0.0" y="457" width="375" height="169"/>
+                                        <rect key="frame" x="0.0" y="429" width="375" height="169"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hIR-MS-JdQ" id="3jO-nG-xxs">
-                                            <frame key="frameInset" width="375" height="168"/>
+                                            <frame key="frameInset" width="375" height="168.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xfb-L7-UOP">
@@ -264,16 +267,19 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="108" id="zap-Bb-UXc" userLabel="EveningTimePickerCell">
-                                        <rect key="frame" x="0.0" y="626" width="375" height="108"/>
+                                        <rect key="frame" x="0.0" y="598" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zap-Bb-UXc" id="gts-Ux-5uM">
-                                            <frame key="frameInset" width="375" height="107"/>
+                                            <frame key="frameInset" width="375" height="107.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="G5d-uh-2nz">
                                                     <date key="date" timeIntervalSinceReferenceDate="498260944.88379401">
                                                         <!--2016-10-15 21:49:04 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="eveningDateChanged:" destination="rok-ve-vsZ" eventType="valueChanged" id="LrD-xN-BVE"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -295,6 +301,14 @@
                     <navigationItem key="navigationItem" id="D5B-MT-SXt">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="otm-Sh-OE3"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="eveningTimeLabel" destination="jfr-Y0-37A" id="1gc-5r-1fe"/>
+                        <outlet property="eveningTimePicker" destination="G5d-uh-2nz" id="EDr-4e-IWj"/>
+                        <outlet property="eveningTimePickerCell" destination="zap-Bb-UXc" id="CWH-yi-tNb"/>
+                        <outlet property="morningTimeLabel" destination="DEL-1E-Mav" id="Xop-zU-XFG"/>
+                        <outlet property="morningTimePicker" destination="8c8-n8-1RU" id="RDp-BG-gn8"/>
+                        <outlet property="morningTimePickerCell" destination="Kxf-co-QhP" id="neL-3a-IW2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n8w-Oq-KaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -403,8 +417,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="CSy-oZ-iYu" kind="relationship" relationship="viewControllers" id="CyL-rQ-5Ov"/>
-                        <segue destination="oaQ-wz-ftj" kind="relationship" relationship="viewControllers" id="nsj-u0-hNI"/>
                         <segue destination="Rwa-Ar-cEH" kind="relationship" relationship="viewControllers" id="lT0-Ck-2uS"/>
+                        <segue destination="oaQ-wz-ftj" kind="relationship" relationship="viewControllers" id="nsj-u0-hNI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4o-7r-8LC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -433,9 +447,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="175" height="268"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="equalSpacing" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-hM-zal">
-                                            <frame key="frameInset" minY="8" width="1000" height="1000"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-hM-zal">
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ZQ-KC-lfE">
                                                     <subviews>
@@ -451,10 +463,16 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QbS-2U-M2C"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QbS-2U-M2C">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="198" id="b1H-c1-wMr"/>
+                                                        <constraint firstAttribute="width" constant="168" id="fnV-vV-5zp"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="QbS-2U-M2C" firstAttribute="top" secondItem="9ZQ-KC-lfE" secondAttribute="bottom" constant="7" id="E2i-ug-irM"/>
+                                                <constraint firstItem="QbS-2U-M2C" firstAttribute="top" secondItem="ymY-hM-zal" secondAttribute="top" constant="57" id="v6N-UB-YvA"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
@@ -478,14 +496,14 @@
                     <navigationItem key="navigationItem" id="GeF-Um-1jx">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0Pi-HU-7Gq">
                             <connections>
-                                <segue destination="gfq-M4-Kr0" kind="show" id="h9D-od-CNN"/>
+                                <segue destination="gfq-M4-Kr0" kind="show" identifier="toAddProductTableViewController" id="h9D-od-CNN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Kj-y4-AVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="698" y="-894"/>
+            <point key="canvasLocation" x="696.79999999999995" y="-894.60269865067471"/>
         </scene>
         <!--Shelf-->
         <scene sceneID="Etu-PB-Ydk">
@@ -518,7 +536,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="0ue-H9-7x8" kind="relationship" relationship="rootViewController" id="AUg-Kd-cNt"/>
+                        <segue destination="0ue-H9-7x8" kind="relationship" relationship="rootViewController" id="AVa-k6-Oxv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="si7-bf-wGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
