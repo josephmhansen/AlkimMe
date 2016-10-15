@@ -136,61 +136,47 @@
                         <sections>
                             <tableViewSection id="feP-tT-3wc">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iQp-Rw-iXV" userLabel="MorningLabelCell">
-                                        <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="196" id="910-6E-WoO" userLabel="MorningSetTimeCell">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="196"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iQp-Rw-iXV" id="r4Z-C3-Wkx">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="910-6E-WoO" id="F1I-ge-86Y">
+                                            <frame key="frameInset" width="375" height="195"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiO-fL-bsH">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZK3-Pl-Kp4">
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhI-mE-PuU">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhI-mE-PuU">
                                                             <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhm-hs-PUX">
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="exI-Wz-WmK">
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="220" id="Buj-70-VmN"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEL-1E-Mav">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="YiO-fL-bsH" firstAttribute="top" secondItem="r4Z-C3-Wkx" secondAttribute="top" id="3V0-HY-6HA"/>
-                                                <constraint firstItem="YiO-fL-bsH" firstAttribute="leading" secondItem="r4Z-C3-Wkx" secondAttribute="leadingMargin" constant="23" id="tb2-pi-mWD"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="169" id="910-6E-WoO" userLabel="MorningSetTimeCell">
-                                        <rect key="frame" x="0.0" y="108" width="375" height="169"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="910-6E-WoO" id="F1I-ge-86Y">
-                                            <frame key="frameInset" width="375" height="168.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhm-hs-PUX">
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="exI-Wz-WmK">
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="220" id="Buj-70-VmN"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEL-1E-Mav">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="nhm-hs-PUX" secondAttribute="trailing" id="3l5-nE-k4l"/>
-                                                <constraint firstItem="nhm-hs-PUX" firstAttribute="top" secondItem="F1I-ge-86Y" secondAttribute="topMargin" id="44j-fn-mWA"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="nhm-hs-PUX" secondAttribute="bottom" id="CTG-9g-1qj"/>
-                                                <constraint firstItem="nhm-hs-PUX" firstAttribute="leading" secondItem="F1I-ge-86Y" secondAttribute="leadingMargin" id="aG7-QP-4fi"/>
+                                                <constraint firstItem="ZK3-Pl-Kp4" firstAttribute="top" secondItem="F1I-ge-86Y" secondAttribute="topMargin" id="5ih-1r-NTi"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ZK3-Pl-Kp4" secondAttribute="bottom" id="C3I-rJ-vZX"/>
+                                                <constraint firstItem="ZK3-Pl-Kp4" firstAttribute="leading" secondItem="F1I-ge-86Y" secondAttribute="leadingMargin" id="Vbf-nn-hET"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ZK3-Pl-Kp4" secondAttribute="trailing" id="nFq-kZ-l0n"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="108" id="Kxf-co-QhP" userLabel="MorningTimePickerCell">
-                                        <rect key="frame" x="0.0" y="277" width="375" height="108"/>
+                                        <rect key="frame" x="0.0" y="260" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kxf-co-QhP" id="eCC-ZM-dw9">
                                             <frame key="frameInset" width="375" height="107.5"/>
@@ -213,61 +199,47 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="k3t-MZ-dkf" userLabel="EveningLabelCell">
-                                        <rect key="frame" x="0.0" y="385" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="210" id="hIR-MS-JdQ" userLabel="EveningSetTimeCell">
+                                        <rect key="frame" x="0.0" y="368" width="375" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k3t-MZ-dkf" id="lQk-zZ-Wur">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hIR-MS-JdQ" id="3jO-nG-xxs">
+                                            <frame key="frameInset" width="375" height="209"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kmF-Nt-IKY">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JEZ-OC-G3C">
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huh-Km-ioj">
                                                             <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAU-RH-dKU">
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="N0k-gd-hkq">
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="220" id="enm-Ki-ELY"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20S-6e-uls">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kmF-Nt-IKY" firstAttribute="leading" secondItem="lQk-zZ-Wur" secondAttribute="leadingMargin" constant="23" id="kWH-Aj-DZu"/>
-                                                <constraint firstItem="kmF-Nt-IKY" firstAttribute="top" secondItem="lQk-zZ-Wur" secondAttribute="top" id="tQQ-Wk-08b"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="169" id="hIR-MS-JdQ" userLabel="EveningSetTimeCell">
-                                        <rect key="frame" x="0.0" y="429" width="375" height="169"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hIR-MS-JdQ" id="3jO-nG-xxs">
-                                            <frame key="frameInset" width="375" height="168.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xfb-L7-UOP">
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunset" translatesAutoresizingMaskIntoConstraints="NO" id="500-om-WMD">
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="220" id="wdy-4y-gyd"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfr-Y0-37A">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Xfb-L7-UOP" secondAttribute="trailing" id="4RK-58-Cf5"/>
-                                                <constraint firstItem="Xfb-L7-UOP" firstAttribute="leading" secondItem="3jO-nG-xxs" secondAttribute="leadingMargin" id="7UM-fb-XfD"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Xfb-L7-UOP" secondAttribute="bottom" id="kY6-Nf-KzC"/>
-                                                <constraint firstItem="Xfb-L7-UOP" firstAttribute="top" secondItem="3jO-nG-xxs" secondAttribute="topMargin" id="oXq-0v-YR9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JEZ-OC-G3C" secondAttribute="bottom" id="KAy-NQ-CQN"/>
+                                                <constraint firstItem="JEZ-OC-G3C" firstAttribute="top" secondItem="3jO-nG-xxs" secondAttribute="topMargin" id="WQh-Xd-lek"/>
+                                                <constraint firstItem="JEZ-OC-G3C" firstAttribute="leading" secondItem="3jO-nG-xxs" secondAttribute="leadingMargin" id="ZBy-uY-xsG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JEZ-OC-G3C" secondAttribute="trailing" id="f1P-8K-1FJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="108" id="zap-Bb-UXc" userLabel="EveningTimePickerCell">
-                                        <rect key="frame" x="0.0" y="598" width="375" height="108"/>
+                                        <rect key="frame" x="0.0" y="578" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zap-Bb-UXc" id="gts-Ux-5uM">
                                             <frame key="frameInset" width="375" height="107.5"/>
@@ -302,7 +274,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" id="otm-Sh-OE3"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="eveningTimeLabel" destination="jfr-Y0-37A" id="1gc-5r-1fe"/>
+                        <outlet property="eveningTimeLabel" destination="20S-6e-uls" id="aKg-9c-3z4"/>
                         <outlet property="eveningTimePicker" destination="G5d-uh-2nz" id="EDr-4e-IWj"/>
                         <outlet property="eveningTimePickerCell" destination="zap-Bb-UXc" id="CWH-yi-tNb"/>
                         <outlet property="morningTimeLabel" destination="DEL-1E-Mav" id="Xop-zU-XFG"/>
@@ -312,7 +284,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n8w-Oq-KaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="33"/>
+            <point key="canvasLocation" x="1533.5999999999999" y="32.833583208395808"/>
         </scene>
         <!--Add Products-->
         <scene sceneID="o0h-El-5jh">
@@ -509,7 +481,7 @@
         <scene sceneID="Etu-PB-Ydk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CSy-oZ-iYu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shelf" selectedImage="Shelf" id="rpF-ZN-Diz"/>
+                    <tabBarItem key="tabBarItem" title="Shelf" image="Shelf" selectedImage="Shelf" id="rpF-ZN-Diz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YiR-QF-JGY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -528,7 +500,7 @@
         <scene sceneID="aXp-Qs-HBT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rwa-Ar-cEH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Routine" image="Routine" id="KOo-qz-9xu"/>
+                    <tabBarItem key="tabBarItem" title="Routine" image="Routine" selectedImage="Routine" id="KOo-qz-9xu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rxt-U2-pmd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -552,6 +524,5 @@
         <image name="incomplete" width="1200" height="1200"/>
         <image name="routine_settings" width="50" height="50"/>
         <image name="sunrise" width="1200" height="1200"/>
-        <image name="sunset" width="1200" height="1200"/>
     </resources>
 </document>
