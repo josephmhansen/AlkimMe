@@ -141,7 +141,7 @@
                                         <rect key="frame" x="0.0" y="99" width="375" height="196"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="910-6E-WoO" id="F1I-ge-86Y">
-                                            <frame key="frameInset" width="375" height="195"/>
+                                            <frame key="frameInset" width="375" height="195.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZK3-Pl-Kp4">
@@ -180,7 +180,7 @@
                                         <rect key="frame" x="0.0" y="295" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kxf-co-QhP" id="eCC-ZM-dw9">
-                                            <frame key="frameInset" width="375" height="107"/>
+                                            <frame key="frameInset" width="375" height="107.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8c8-n8-1RU">
@@ -204,7 +204,7 @@
                                         <rect key="frame" x="0.0" y="403" width="375" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hIR-MS-JdQ" id="3jO-nG-xxs">
-                                            <frame key="frameInset" width="375" height="209"/>
+                                            <frame key="frameInset" width="375" height="209.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JEZ-OC-G3C">
@@ -243,7 +243,7 @@
                                         <rect key="frame" x="0.0" y="613" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zap-Bb-UXc" id="gts-Ux-5uM">
-                                            <frame key="frameInset" width="375" height="107"/>
+                                            <frame key="frameInset" width="375" height="107.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="G5d-uh-2nz">
@@ -307,7 +307,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="productCell" rowHeight="73" id="oaq-bb-SRL" customClass="AddProductsTableViewCell" customModule="AlkimMe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="343" height="73"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="1000" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oaq-bb-SRL" id="7VU-DE-hEa">
                                             <frame key="frameInset" width="343" height="72.5"/>
