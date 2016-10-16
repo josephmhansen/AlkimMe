@@ -154,7 +154,7 @@
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="exI-Wz-WmK">
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="220" id="Buj-70-VmN"/>
+                                                                        <constraint firstAttribute="width" constant="180" id="er0-Te-Xry"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEL-1E-Mav">
@@ -215,9 +215,9 @@
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAU-RH-dKU">
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="N0k-gd-hkq">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunset" translatesAutoresizingMaskIntoConstraints="NO" id="N0k-gd-hkq">
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="220" id="enm-Ki-ELY"/>
+                                                                        <constraint firstAttribute="width" constant="180" id="7gJ-4F-EAo"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20S-6e-uls">
@@ -524,5 +524,6 @@
         <image name="incomplete" width="1200" height="1200"/>
         <image name="routine_settings" width="50" height="50"/>
         <image name="sunrise" width="1200" height="1200"/>
+        <image name="sunset" width="1200" height="1200"/>
     </resources>
 </document>
