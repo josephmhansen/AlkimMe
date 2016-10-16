@@ -398,7 +398,7 @@
             </objects>
             <point key="canvasLocation" x="-1518" y="33"/>
         </scene>
-        <!--Shelf Collection View Controller-->
+        <!--Shelf-->
         <scene sceneID="xdd-Oy-bS4">
             <objects>
                 <collectionViewController id="SDN-KA-6pl" customClass="ShelfCollectionViewController" customModule="AlkimMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -466,7 +466,7 @@
                             <outlet property="delegate" destination="SDN-KA-6pl" id="5wo-k8-qzS"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="GeF-Um-1jx">
+                    <navigationItem key="navigationItem" title="Shelf" id="GeF-Um-1jx">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0Pi-HU-7Gq">
                             <connections>
                                 <segue destination="gfq-M4-Kr0" kind="show" identifier="toAddProductTableViewController" id="h9D-od-CNN"/>

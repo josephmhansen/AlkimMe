@@ -7,19 +7,30 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "Cell"
 
-class ShelfCollectionViewController: UICollectionViewController {
+class ShelfCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate {
 
+    
+    // MARK: Properties
+    
+//    let collectionView: UICollectionView
+    var blockOperations: [BlockOperation] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ProductController.sharedController.fetchedResultsController.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        guard collectionView != nil else { return }
+        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -33,7 +44,9 @@ class ShelfCollectionViewController: UICollectionViewController {
     func updateShelfCollectionView(sender: AddProductsTableViewCell) {
         //        reload view with items user has
     }
-
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -48,22 +61,145 @@ class ShelfCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        guard let items = ProductController.sharedController.fetchedResultsController.sections?[0] else {
+            fatalError()
+        }
+        
+        
+        return items.numberOfObjects
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productShelfCell", for: indexPath) as? ShelfCollectionViewCell else { return UICollectionViewCell() }
+        let product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
+        cell.updateWithProduct(product: product)
+//        cell.delegate = self
     
         // Configure the cell
     
         return cell
     }
+    
+    
+    //=============================================================
+    // MARK: FetchedResultsControllerDelegate Methods
+    //=============================================================
+    
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        blockOperations.removeAll(keepingCapacity: false)
+    }
+    
+    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeObject anObject: AnyObject, atIndexPath indexPath: IndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        if type == NSFetchedResultsChangeType.insert {
+            print("Insert Object: \(newIndexPath)")
+            
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView?.insertItems(at: [newIndexPath! as IndexPath])
+                    }
+                    })
+            )
+        }
+        else if type == NSFetchedResultsChangeType.update {
+            print("Update Object: \(indexPath)")
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView?.reloadItems(at: [indexPath! as IndexPath])
+                    }
+                    })
+            )
+        }
+        else if type == NSFetchedResultsChangeType.move {
+            print("Move Object: \(indexPath)")
+            
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView?.moveItem(at: indexPath! as IndexPath, to: newIndexPath! as IndexPath)
+                    }
+                    })
+            )
+        }
+        else if type == NSFetchedResultsChangeType.delete {
+            print("Delete Object: \(indexPath)")
+            
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView?.deleteItems(at: [indexPath! as IndexPath])
+                    }
+                    })
+            )
+        }
+    }
+    
+    
+    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        
+        if type == NSFetchedResultsChangeType.insert {
+            print("Insert Section: \(sectionIndex)")
+            
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView?.insertSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                    }
+                    })
+            )
+        }
+        else if type == NSFetchedResultsChangeType.update {
+            print("Update Section: \(sectionIndex)")
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView?.reloadSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                    }
+                    })
+            )
+        }
+        else if type == NSFetchedResultsChangeType.delete {
+            print("Delete Section: \(sectionIndex)")
+            
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView?.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                    }
+                    })
+            )
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        collectionView?.performBatchUpdates({ () -> Void in
+            for operation: BlockOperation in self.blockOperations {
+                operation.start()
+            }
+            }, completion: { (finished) -> Void in
+                self.blockOperations.removeAll(keepingCapacity: false)
+        })
+    }
+    
+    deinit {
+        // Cancel all block operations when VC deallocates
+        for operation: BlockOperation in blockOperations {
+            operation.cancel()
+        }
+        
+        blockOperations.removeAll(keepingCapacity: false)
+    }
+
+    
+    
 
     // MARK: UICollectionViewDelegate
 

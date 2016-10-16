@@ -81,7 +81,7 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? AddProductsTableViewCell else { return UITableViewCell() }
-//            let product = ProductController.sharedController.sortedProducts[indexPath.section][indexPath.row]
+//          let product = ProductController.sharedController.sortedProducts[indexPath.section][indexPath.row]
             let product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
 //        cell.product = product
         
@@ -99,7 +99,7 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     //=============================================================
-    // MARK: 
+    // MARK: FetchedResultsControllerDelegate Methods
     //=============================================================
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

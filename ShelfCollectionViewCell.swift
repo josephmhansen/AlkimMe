@@ -8,12 +8,14 @@
 
 import UIKit
 
+@IBDesignable
+
 class ShelfCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
     
-    //weak var delegate: ShelfCollectionViewCellDelegate?
+    weak var delegate: ShelfCollectionViewCellDelegate?
     
     
     
@@ -29,4 +31,8 @@ extension ShelfCollectionViewCell {
         productNameLabel.text = product.name
         productImageView.image = UIImage(named: "\(product.imageName)")
     }
+}
+
+protocol ShelfCollectionViewCellDelegate: class {
+    func updateShelfCollectionView(sender: AddProductsViewController)
 }

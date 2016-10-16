@@ -19,7 +19,7 @@ class AddProductsTableViewCell: UITableViewCell {
     
     weak var delegate: AddProductTableViewCellDelegate?
     
-    var product: Product?
+//    var product: Product?
     
     
     
