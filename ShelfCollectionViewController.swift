@@ -95,7 +95,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
         blockOperations.removeAll(keepingCapacity: false)
     }
     
-    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeObject anObject: AnyObject, atIndexPath indexPath: IndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    private func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeObject anObject: AnyObject, atIndexPath indexPath: IndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         if type == NSFetchedResultsChangeType.insert {
             print("Insert Object: \(newIndexPath)")
