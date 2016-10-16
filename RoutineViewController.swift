@@ -12,7 +12,7 @@ class RoutineViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        self.tableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
     }
 

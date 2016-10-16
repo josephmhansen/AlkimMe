@@ -36,7 +36,7 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
 //        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
 //        tableView.reloadData()
         
-        
+        self.tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +88,12 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
         cell.updateWithProduct(product: product)
         cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "Futura", size: 25)!
+        header.textLabel?.textColor = UIColor.black
     }
     
     
