@@ -63,6 +63,18 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     */
 
     // MARK: UICollectionViewDataSource
+    
+    /*
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let popoverVC = storyboard?.instantiateViewController(withIdentifier: "popoverView") as UIViewController else { return }
+        popoverVC.modalPresentationStyle = .none
+        present(popoverVC, animated: true, completion: nil)
+        let popoverController = popoverVC.popoverPresentationController
+        popoverController.sourceView = self.view
+        popoverController.sourceRect = fromRect
+        popoverController.permitedArrowDirections = .Any
+    }
+ */
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -246,12 +258,12 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     }
     */
 
-    /*
+    
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
+    
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
