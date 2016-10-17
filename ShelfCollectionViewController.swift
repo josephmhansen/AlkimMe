@@ -30,9 +30,13 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
 
         // Register cell classes
         guard collectionView != nil else { return }
-        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,21 +67,52 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    var sectionsSetToOne: Bool {
+        if ProductController.sharedController.fetchedResultsController.sections?.count == 2 {
+            return false
+        } else {
+            return true
+        }
+    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let items = ProductController.sharedController.fetchedResultsController.sections?[1] else {
-            fatalError()
+        guard let items = ProductController.sharedController.fetchedResultsController.sections?[0].objects as? [Product] else {
+            return 0
+        }
+        guard let firstProduct = items.first else
+        { return 0 }
+        
+        if sectionsSetToOne == true {
+            if firstProduct.have == true {
+                return items.count
+            } else {
+                return 0
+            }
+        } else if sectionsSetToOne == false {
+            guard let otherItems = ProductController.sharedController.fetchedResultsController.sections?[1] else { return 0 }
+            return otherItems.numberOfObjects
+        } else {
+            return 0
         }
         
         
-        return items.numberOfObjects
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productShelfCell", for: indexPath) as? ShelfCollectionViewCell else { return UICollectionViewCell() }
-        let product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
-        cell.updateWithProduct(product: product)
+        
+        var product: Product?
+        if sectionsSetToOne == true {
+            product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
+        } else {
+            let newIndexPath = IndexPath(row: indexPath.row, section: 1)
+            product = ProductController.sharedController.fetchedResultsController.object(at: newIndexPath)
+        }
+        guard let unwrappedProduct = product else { return UICollectionViewCell() }
+        
+        cell.updateWithProduct(product: unwrappedProduct)
 //        cell.delegate = self
     
         // Configure the cell
