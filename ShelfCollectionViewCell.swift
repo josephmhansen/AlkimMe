@@ -27,9 +27,12 @@ class ShelfCollectionViewCell: UICollectionViewCell {
 
 extension ShelfCollectionViewCell {
     func updateWithProduct(product: Product) {
-        logoImageView.image = UIImage(named: "\(product.logoName)")
+        var productLogoImage = UIImage(named: "\(product.logoName)")
+        logoImageView.image = productLogoImage
+        var productImage = UIImage(named: "\(product.imageName)")
         productNameLabel.text = product.name
-        productImageView.image = UIImage(named: "\(product.imageName)")
+        
+        productImageView.image = productImage
     }
 }
 

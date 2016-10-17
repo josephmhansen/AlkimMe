@@ -66,7 +66,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let items = ProductController.sharedController.fetchedResultsController.sections?[0] else {
+        guard let items = ProductController.sharedController.fetchedResultsController.sections?[1] else {
             fatalError()
         }
         

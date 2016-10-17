@@ -8,7 +8,7 @@
          "name":"Mist",
          "price":15,
          "priority":1,
-               "logo_name": ""
+               "logo_name": "stock_logo"
       },
       {  
          "have":false,
@@ -18,7 +18,7 @@
          "name":"Vitamin C",
          "price":75,
          "priority":2,
-               "logo_name": ""
+               "logo_name": "stock_logo"
       },
       {  
          "have":false,
@@ -28,17 +28,17 @@
          "name":"Serum",
          "price":60,
          "priority":3,
-               "logo_name": ""
+               "logo_name": "stock_logo"
       },
       {  
          "have":false,
-         "image_name":"elixer",
+         "image_name":"elixir",
          "ingredients":"Precious, pure and natural oils of neroli, pomegranate, meadowfoam, argan, seabuckthorn, German chamomile, and rosehip",
          "instructions":"Apply 3-5 drops once or twice daily directly following ALKIM ME Serum. May also be used alone on freshly washed skin twice daily. Apply to face, neck, decollete and tops of hands. ",
          "name":"Elixer",
          "price":80,
          "priority":4,
-               "logo_name": ""
+               "logo_name": "stock_logo"
       }
    ]
 }

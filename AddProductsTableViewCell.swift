@@ -63,7 +63,7 @@ class AddProductsTableViewCell: UITableViewCell {
 extension AddProductsTableViewCell {
     func updateWithProduct(product: Product) {
         productNameLabel.text = product.name
-        productLogoSymbol.image = UIImage(named: "\(product.imageName)")
+        productLogoSymbol.image = UIImage(named: "\(product.logoName)")
         updateHaveButton(have: product.have)
     }
 }
