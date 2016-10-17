@@ -37,6 +37,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        collectionView?.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
