@@ -157,9 +157,6 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
 //        popoverController.permittedArrowDirections = .any
     }
     
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
     
     
     //=============================================================
@@ -275,7 +272,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     }
 
     
-   
+   //MARK: 
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -288,9 +285,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
         }
     }
     
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
-    }
+    
     
 
     // MARK: UICollectionViewDelegate
