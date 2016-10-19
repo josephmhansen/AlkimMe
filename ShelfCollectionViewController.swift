@@ -133,6 +133,22 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let attributes = collectionView.layoutAttributesForItem(at: indexPath) else { return }
+        let fromRect: CGRect = collectionView.convert(attributes.frame, to: collectionView.superview)
+        
+            //self.tableView.rectForRowAtIndexPath(indexPath)
+        guard let storyboard = storyboard else { return }
+        
+        let popoverVC = storyboard.instantiateViewController(withIdentifier: "popoverEdit") 
+        popoverVC.modalPresentationStyle = .popover
+        present(popoverVC, animated: true, completion: nil)
+        guard let popoverController = popoverVC.popoverPresentationController else { return }
+        popoverController.sourceView = self.view
+        popoverController.sourceRect = fromRect
+        popoverController.permittedArrowDirections = .any
+    }
+    
     
     //=============================================================
     // MARK: FetchedResultsControllerDelegate Methods
