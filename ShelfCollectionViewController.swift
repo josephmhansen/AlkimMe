@@ -276,7 +276,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PopoverSegue" {
+        if segue.identifier == "toProductPopover" {
             let controller = segue.destination
             
                 controller.popoverPresentationController?.delegate = self

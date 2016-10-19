@@ -485,7 +485,7 @@
                                     <outlet property="logoImageView" destination="3OQ-O4-Qcv" id="gTF-Ru-OAQ"/>
                                     <outlet property="productImageView" destination="QbS-2U-M2C" id="dD5-Hp-8mh"/>
                                     <outlet property="productNameLabel" destination="4Ua-zh-PHG" id="I2m-xt-gcE"/>
-                                    <segue destination="hxD-Pb-PBF" kind="presentation" id="fT2-gQ-VZl"/>
+                                    <segue destination="hxD-Pb-PBF" kind="presentation" identifier="toProductPopover" id="fT2-gQ-VZl"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -562,7 +562,71 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ye-9h-2l0">
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="obr-rr-JOv">
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGK-5Z-Jxa">
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wua-1P-YCR">
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="44" id="CtC-Go-UlK"/>
+                                                                        <constraint firstAttribute="width" secondItem="wua-1P-YCR" secondAttribute="height" multiplier="1:1" id="JFh-Re-JnS"/>
+                                                                        <constraint firstAttribute="width" constant="44" id="fY8-cd-gJs"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProductName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPY-eI-jdI">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgZ-xh-8eK">
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8e8-Ns-OuV">
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="44" id="1jT-2D-OE2"/>
+                                                                        <constraint firstAttribute="height" constant="44" id="3p8-sN-t1c"/>
+                                                                        <constraint firstAttribute="width" secondItem="8e8-Ns-OuV" secondAttribute="height" multiplier="1:1" id="LlF-hg-NAU"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94B-a5-ieq">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgl-og-cRO">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gKV-nO-zoa">
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                    </subviews>
+                                                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                </stackView>
+                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="obr-rr-JOv" secondAttribute="bottom" id="Kls-bb-H4E"/>
+                                                <constraint firstAttribute="bottom" secondItem="obr-rr-JOv" secondAttribute="bottom" id="SnL-vg-fkW"/>
+                                                <constraint firstAttribute="trailing" secondItem="obr-rr-JOv" secondAttribute="trailing" id="TyQ-2F-lIa"/>
+                                                <constraint firstItem="obr-rr-JOv" firstAttribute="leading" secondItem="1ye-9h-2l0" secondAttribute="leading" id="bEs-J1-KXn"/>
+                                                <constraint firstAttribute="trailing" secondItem="obr-rr-JOv" secondAttribute="trailing" id="c6x-m7-tfj"/>
+                                                <constraint firstItem="obr-rr-JOv" firstAttribute="top" secondItem="1ye-9h-2l0" secondAttribute="top" id="dh1-e5-402"/>
+                                                <constraint firstItem="obr-rr-JOv" firstAttribute="top" secondItem="1ye-9h-2l0" secondAttribute="top" id="e9w-sG-f3P"/>
+                                                <constraint firstAttribute="bottom" secondItem="obr-rr-JOv" secondAttribute="bottom" id="eEO-7h-y0i"/>
+                                                <constraint firstAttribute="trailing" secondItem="obr-rr-JOv" secondAttribute="trailing" id="ezy-Xi-87d"/>
+                                                <constraint firstItem="obr-rr-JOv" firstAttribute="top" secondItem="1ye-9h-2l0" secondAttribute="top" id="gOf-YK-e4Q"/>
+                                                <constraint firstItem="obr-rr-JOv" firstAttribute="leading" secondItem="1ye-9h-2l0" secondAttribute="leading" id="ntA-7L-3pZ"/>
+                                                <constraint firstItem="obr-rr-JOv" firstAttribute="leading" secondItem="1ye-9h-2l0" secondAttribute="leading" id="x57-Ex-FtH"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
