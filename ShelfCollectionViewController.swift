@@ -11,7 +11,7 @@ import CoreData
 
 private let reuseIdentifier = "Cell"
 
-class ShelfCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate {
+class ShelfCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     
     // MARK: Properties
@@ -137,16 +137,28 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
         guard let attributes = collectionView.layoutAttributesForItem(at: indexPath) else { return }
         let fromRect: CGRect = collectionView.convert(attributes.frame, to: collectionView.superview)
         
-            //self.tableView.rectForRowAtIndexPath(indexPath)
-        guard let storyboard = storyboard else { return }
         
-        let popoverVC = storyboard.instantiateViewController(withIdentifier: "popoverEdit") 
-        popoverVC.modalPresentationStyle = .popover
-        present(popoverVC, animated: true, completion: nil)
-        guard let popoverController = popoverVC.popoverPresentationController else { return }
-        popoverController.sourceView = self.view
-        popoverController.sourceRect = fromRect
-        popoverController.permittedArrowDirections = .any
+//            //self.tableView.rectForRowAtIndexPath(indexPath)
+//        guard let storyboard = storyboard else { return }
+//        
+//        let popoverVC = storyboard.instantiateViewController(withIdentifier: "popoverEdit")
+//        let nav = UINavigationController(rootViewController: popoverVC)
+//        nav.modalPresentationStyle = UIModalPresentationStyle.popover
+//        let popover = nav.popoverPresentationController
+//        popoverVC.modalPresentationStyle = .popover
+//        present(popoverVC, animated: true, completion: nil)
+//        guard let popoverController = popoverVC.popoverPresentationController else { return }
+//        
+////        popoverController.preferredContentSize = CGSizeMake(width: 320, height: 400)
+////        popover?.delegate = self
+////            CGSizeMake(x: 500, y: 600)
+//        popoverController.sourceView = self.view
+//        popoverController.sourceRect = fromRect
+//        popoverController.permittedArrowDirections = .any
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     
@@ -263,6 +275,22 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     }
 
     
+   
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PopoverSegue" {
+            let controller = segue.destination
+            
+                controller.popoverPresentationController?.delegate = self
+                controller.preferredContentSize = CGSize(width: 320, height: 400)
+            
+        }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
     
 
     // MARK: UICollectionViewDelegate
@@ -276,10 +304,10 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
 
     
     // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+   /* override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+    */
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item

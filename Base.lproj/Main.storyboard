@@ -310,7 +310,7 @@
                                         <rect key="frame" x="0.0" y="55.5" width="1000" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oaq-bb-SRL" id="7VU-DE-hEa">
-                                            <frame key="frameInset" width="1000" height="72.5"/>
+                                            <frame key="frameInset" width="343" height="72.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="U4l-0T-81z">
@@ -398,10 +398,10 @@
             </objects>
             <point key="canvasLocation" x="-1518" y="33"/>
         </scene>
-        <!--View Controller-->
+        <!--Popover Product Detail View Controller-->
         <scene sceneID="QL0-2v-iNx">
             <objects>
-                <viewController storyboardIdentifier="popoverEdit" id="X1V-li-ezB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popoverEdit" modalPresentationStyle="formSheet" id="X1V-li-ezB" customClass="PopoverProductDetailViewController" customModule="AlkimMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aUF-8y-8zr"/>
                         <viewControllerLayoutGuide type="bottom" id="ETE-3K-VGs"/>
@@ -420,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3OC-X4-DCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1163" y="-1541"/>
+            <point key="canvasLocation" x="694" y="-1509"/>
         </scene>
         <!--Shelf-->
         <scene sceneID="xdd-Oy-bS4">
@@ -485,6 +485,7 @@
                                     <outlet property="logoImageView" destination="3OQ-O4-Qcv" id="gTF-Ru-OAQ"/>
                                     <outlet property="productImageView" destination="QbS-2U-M2C" id="dD5-Hp-8mh"/>
                                     <outlet property="productNameLabel" destination="4Ua-zh-PHG" id="I2m-xt-gcE"/>
+                                    <segue destination="X1V-li-ezB" kind="presentation" id="jqo-lW-ZBe"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
