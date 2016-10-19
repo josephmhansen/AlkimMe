@@ -467,9 +467,10 @@
                                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QbS-2U-M2C">
-                                                    <frame key="frameInset" minY="71" width="154" height="155"/>
+                                                    <frame key="frameInset" minX="8" minY="63" width="138" height="155"/>
                                                 </imageView>
                                             </subviews>
+                                            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         </stackView>
                                     </subviews>
                                 </view>
