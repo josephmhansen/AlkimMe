@@ -33,6 +33,7 @@ class PopoverProductDetailViewController: UIViewController, NSFetchedResultsCont
     @IBAction func closeButtonTapped(_ sender: AnyObject) {
     }
     @IBAction func outsideGestureTapped(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 

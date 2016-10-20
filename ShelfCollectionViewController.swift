@@ -39,7 +39,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
             NSLog("Error with the initial fetch of the fetchedResultsController: \(error)")
         }
         
-        
+        collectionView?.reloadData()
         guard collectionView != nil else { return }
 //        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
@@ -89,37 +89,18 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    var sectionsSetToOne: Bool {
-        if ProductController.sharedController.fetchedResultsController.sections?.count == 2 {
-            return false
-        } else {
-            return true
-        }
+        return self.fetchedResultsController.sections?.count ?? 0
+  
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let items = fetchedResultsController.sections?[0].objects as? [Product] else {
-            return 0
-        }
-        guard let firstProduct = items.first else
-        { return 0 }
         
-        if sectionsSetToOne == true {
-            if firstProduct.have == true {
-                return items.count
-            } else {
-                return 0
-            }
-        } else if sectionsSetToOne == false {
-            guard let otherItems = fetchedResultsController.sections?[1] else { return 0 }
-            return otherItems.numberOfObjects
-        } else {
+        guard let items = fetchedResultsController.fetchedObjects?.count else {
             return 0
         }
+        return items
+        
         
         
     }
@@ -127,46 +108,46 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productShelfCell", for: indexPath) as? ShelfCollectionViewCell else { return UICollectionViewCell() }
         
-        var product: Product?
-        if sectionsSetToOne == true {
-            product = fetchedResultsController.object(at: indexPath)
-        } else {
-            let newIndexPath = IndexPath(row: indexPath.row, section: 1)
-            product = fetchedResultsController.object(at: newIndexPath)
-        }
-        guard let unwrappedProduct = product else { return UICollectionViewCell() }
+        let product = self.fetchedResultsController.object(at: indexPath)
         
-        cell.updateWithProduct(product: unwrappedProduct)
-//        cell.delegate = self
-    
-        // Configure the cell
+//        var product: Product?
+//        if sectionsSetToOne == true {
+//            product = fetchedResultsController.object(at: indexPath)
+//        } else {
+//            let newIndexPath = IndexPath(row: indexPath.row, section: 1)
+//            product = fetchedResultsController.object(at: newIndexPath)
+//        }
+//        guard let unwrappedProduct = product else { return UICollectionViewCell() }
+        
+        cell.updateWithProduct(product: product)
+
     
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let attributes = collectionView.layoutAttributesForItem(at: indexPath) else { return }
-        let fromRect: CGRect = collectionView.convert(attributes.frame, to: collectionView.superview)
-        
-        
-//            //self.tableView.rectForRowAtIndexPath(indexPath)
-//        guard let storyboard = storyboard else { return }
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let attributes = collectionView.layoutAttributesForItem(at: indexPath) else { return }
+//        let fromRect: CGRect = collectionView.convert(attributes.frame, to: collectionView.superview)
 //        
-//        let popoverVC = storyboard.instantiateViewController(withIdentifier: "popoverEdit")
-//        let nav = UINavigationController(rootViewController: popoverVC)
-//        nav.modalPresentationStyle = UIModalPresentationStyle.popover
-//        let popover = nav.popoverPresentationController
-//        popoverVC.modalPresentationStyle = .popover
-//        present(popoverVC, animated: true, completion: nil)
-//        guard let popoverController = popoverVC.popoverPresentationController else { return }
 //        
-////        popoverController.preferredContentSize = CGSizeMake(width: 320, height: 400)
-////        popover?.delegate = self
-////            CGSizeMake(x: 500, y: 600)
-//        popoverController.sourceView = self.view
-//        popoverController.sourceRect = fromRect
-//        popoverController.permittedArrowDirections = .any
-    }
+////            //self.tableView.rectForRowAtIndexPath(indexPath)
+////        guard let storyboard = storyboard else { return }
+////        
+////        let popoverVC = storyboard.instantiateViewController(withIdentifier: "popoverEdit")
+////        let nav = UINavigationController(rootViewController: popoverVC)
+////        nav.modalPresentationStyle = UIModalPresentationStyle.popover
+////        let popover = nav.popoverPresentationController
+////        popoverVC.modalPresentationStyle = .popover
+////        present(popoverVC, animated: true, completion: nil)
+////        guard let popoverController = popoverVC.popoverPresentationController else { return }
+////        
+//////        popoverController.preferredContentSize = CGSizeMake(width: 320, height: 400)
+//////        popover?.delegate = self
+//////            CGSizeMake(x: 500, y: 600)
+////        popoverController.sourceView = self.view
+////        popoverController.sourceRect = fromRect
+////        popoverController.permittedArrowDirections = .any
+//    }
     
     
     
@@ -179,7 +160,9 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
         blockOperations.removeAll(keepingCapacity: false)
     }
     
-    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeObject anObject: AnyObject, atIndexPath indexPath: IndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         if type == NSFetchedResultsChangeType.insert {
             print("Insert Object: \(newIndexPath)")
@@ -298,7 +281,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
             if let indexPaths = collectionView?.indexPathsForSelectedItems {
                 let indexPath = indexPaths[0]
                 let controller = segue.destination as? PopoverProductDetailViewController
-                controller?.product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
+                controller?.product = fetchedResultsController.object(at: indexPath)
             }
 //
             

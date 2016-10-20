@@ -48,12 +48,6 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
         }
 
         
-        
-
-        fetchedResultsController.delegate = self
-//        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
-//        tableView.reloadData()
-        
         self.tableView.tableFooterView = UIView()
     }
     
@@ -66,8 +60,6 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.fetchedResultsController.sections?.count ?? 0
-            
-       
         
     }
     
@@ -94,10 +86,8 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? AddProductsTableViewCell else { return UITableViewCell() }
-          let product = self.fetchedResultsController.object(at: indexPath)
-//            let product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
-//        cell.product = product
-        
+        let product = self.fetchedResultsController.object(at: indexPath)
+
         cell.updateWithProduct(product: product)
         cell.delegate = self
         return cell

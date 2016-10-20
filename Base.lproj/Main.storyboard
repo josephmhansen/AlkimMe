@@ -523,7 +523,7 @@
         <!--Popover Product Detail View Controller-->
         <scene sceneID="kQ0-OY-ndV">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="hxD-Pb-PBF" customClass="PopoverProductDetailViewController" customModule="AlkimMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="hxD-Pb-PBF" customClass="PopoverProductDetailViewController" customModule="AlkimMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LBQ-rl-ufZ"/>
                         <viewControllerLayoutGuide type="bottom" id="j0c-bO-5lU"/>
@@ -646,7 +646,7 @@
                                 </view>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <blurEffect style="prominent"/>
+                                <blurEffect style="extraLight"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="yrK-MM-Pxc" appends="YES" id="pT7-cf-bQn"/>
                                 </connections>
