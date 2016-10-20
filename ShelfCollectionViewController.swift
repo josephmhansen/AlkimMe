@@ -19,6 +19,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
 //    let collectionView: UICollectionView
     var blockOperations: [BlockOperation] = []
 //    let products = ProductController.sharedController.fetchedResultsController
+    static var products: [Product] = []
     
     
     override func viewDidLoad() {

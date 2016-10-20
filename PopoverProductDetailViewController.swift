@@ -37,7 +37,7 @@ class PopoverProductDetailViewController: UIViewController {
     func updateWithProduct(product: Product) {
         productLogoImageView.image = UIImage(named: product.logoName)
         productNameLabel.text = "\(product.name)"
-        priceLabel.text = "\(product.price)"
+        priceLabel.text = "$\(product.price)"
     // CHANGE THIS!!!!!!!!!!!
         productExtendedNameLabel.text = "\(product.name)"
         aboutProductTextView.text = "\(product.ingredients)"
