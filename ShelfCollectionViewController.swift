@@ -210,7 +210,8 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     }
     
     
-    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         
         if type == NSFetchedResultsChangeType.insert {
             print("Insert Section: \(sectionIndex)")
