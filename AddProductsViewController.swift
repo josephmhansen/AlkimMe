@@ -17,7 +17,7 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     
     func haveProductValueChanged(sender: AddProductsTableViewCell) {
         guard let indexPath = tableView.indexPath(for: sender) else { return }
-        let product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
+        let product = fetchedResultsController.object(at: indexPath)
         ProductController.sharedController.isHaveValueChecked(product: product)
         
         

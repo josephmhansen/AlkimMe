@@ -14,24 +14,11 @@ class ProductController {
     
     static let sharedController = ProductController()
     
-    let fetchedResultsController: NSFetchedResultsController<Product>
     
     
     
-    init() {
-        let request: NSFetchRequest<Product> = Product.fetchRequest()
-        let prioritySortDescriptor = NSSortDescriptor(key: "priority", ascending: true)
-        let haveSortDescriptor = NSSortDescriptor(key: "have", ascending: true)
-        request.sortDescriptors = [haveSortDescriptor, prioritySortDescriptor]
-        
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "have", cacheName: nil)
-        
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            NSLog("Error with the initial fetch of the fetchedResultsController, \(error.localizedDescription)")
-        }
-    }
+    
+    
     
     
 

@@ -14,13 +14,6 @@ class PopoverProductDetailViewController: UIViewController, NSFetchedResultsCont
     var product: Product?
     var blockOperations: [BlockOperation] = []
     
-    var sectionsSetToOne: Bool {
-        if ProductController.sharedController.fetchedResultsController.sections?.count == 2 {
-            return false
-        } else {
-            return true
-        }
-    }
     
     @IBOutlet weak var productLogoImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
