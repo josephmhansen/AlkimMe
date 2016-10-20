@@ -7,10 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
-class PopoverProductDetailViewController: UIViewController {
+class PopoverProductDetailViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     var product: Product?
+    var blockOperations: [BlockOperation] = []
+    
+    var sectionsSetToOne: Bool {
+        if ProductController.sharedController.fetchedResultsController.sections?.count == 2 {
+            return false
+        } else {
+            return true
+        }
+    }
     
     @IBOutlet weak var productLogoImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
@@ -29,7 +39,7 @@ class PopoverProductDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let product = product {
+            if let product = product {
             updateWithProduct(product: product)
         }
     }

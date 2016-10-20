@@ -12,7 +12,7 @@ import CoreData
 private let reuseIdentifier = "Cell"
 
 class ShelfCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate {
-
+    var fetchedResultsController: NSFetchedResultsController<Product>!
     
     // MARK: Properties
     
@@ -25,12 +25,21 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ProductController.sharedController.fetchedResultsController.delegate = self
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
+        let fetchRequest: NSFetchRequest<Product> = Product.fetchRequest()
+        let prioritySortDescriptor = NSSortDescriptor(key: "priority", ascending: true)
+        fetchRequest.sortDescriptors = [prioritySortDescriptor]
+        
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray: ["have", true as NSNumber])
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            NSLog("Error with the initial fetch of the fetchedResultsController: \(error)")
+        }
+        
+        
         guard collectionView != nil else { return }
 //        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
@@ -93,7 +102,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let items = ProductController.sharedController.fetchedResultsController.sections?[0].objects as? [Product] else {
+        guard let items = fetchedResultsController.sections?[0].objects as? [Product] else {
             return 0
         }
         guard let firstProduct = items.first else
@@ -106,7 +115,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
                 return 0
             }
         } else if sectionsSetToOne == false {
-            guard let otherItems = ProductController.sharedController.fetchedResultsController.sections?[1] else { return 0 }
+            guard let otherItems = fetchedResultsController.sections?[1] else { return 0 }
             return otherItems.numberOfObjects
         } else {
             return 0
@@ -120,10 +129,10 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
         
         var product: Product?
         if sectionsSetToOne == true {
-            product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
+            product = fetchedResultsController.object(at: indexPath)
         } else {
             let newIndexPath = IndexPath(row: indexPath.row, section: 1)
-            product = ProductController.sharedController.fetchedResultsController.object(at: newIndexPath)
+            product = fetchedResultsController.object(at: newIndexPath)
         }
         guard let unwrappedProduct = product else { return UICollectionViewCell() }
         
@@ -170,7 +179,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
         blockOperations.removeAll(keepingCapacity: false)
     }
     
-    private func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeObject anObject: AnyObject, atIndexPath indexPath: IndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeObject anObject: AnyObject, atIndexPath indexPath: IndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         if type == NSFetchedResultsChangeType.insert {
             print("Insert Object: \(newIndexPath)")
@@ -280,12 +289,18 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toProductPopover" {
             
+//            let popoverVC = segue.destination as! PopoverProductDetailViewController
+//            let cell = sender as! ShelfCollectionViewCell
+//            let indexPath = collectionView?.indexPath(for: cell)
+//            let product = ProductController.sharedController.fetchedResultsController.object(at: indexPath!)
+//            popoverVC.product = product
+            
             if let indexPaths = collectionView?.indexPathsForSelectedItems {
                 let indexPath = indexPaths[0]
                 let controller = segue.destination as? PopoverProductDetailViewController
                 controller?.product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
             }
-            
+//
             
             
 //                controller.popoverPresentationController?.delegate = self

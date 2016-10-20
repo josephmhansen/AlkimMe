@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 
 class AddProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddProductTableViewCellDelegate, NSFetchedResultsControllerDelegate {
+    
+    var fetchedResultsController: NSFetchedResultsController<Product>!
+    
     @IBOutlet weak var tableView: UITableView!
     
     func haveProductValueChanged(sender: AddProductsTableViewCell) {
@@ -30,9 +33,24 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let fetchRequest: NSFetchRequest<Product> = Product.fetchRequest()
+        let prioritySortDescriptor = NSSortDescriptor(key: "priority", ascending: true)
+        let haveSortDescriptor = NSSortDescriptor(key: "have", ascending: true)
+        fetchRequest.sortDescriptors = [haveSortDescriptor, prioritySortDescriptor]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "have", cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            NSLog("Error with the initial fetch of the fetchedResultsController, \(error.localizedDescription)")
+        }
+
+        
         
 
-        ProductController.sharedController.fetchedResultsController.delegate = self
+        fetchedResultsController.delegate = self
 //        print(ProductController.sharedController.fetchedResultsController?.fetchedObjects?.count)
 //        tableView.reloadData()
         
@@ -41,25 +59,20 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
    
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = ProductController.sharedController.fetchedResultsController.sections else {
-            fatalError()
+        return self.fetchedResultsController.sections?.count ?? 0
             
-        }
-       return sections.count
+       
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = ProductController.sharedController.fetchedResultsController.sections else {
-            fatalError()
-            
-        }
-        let sectionInfo = sections[section]
+        let sectionInfo = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
         return sectionInfo.numberOfObjects
         
     }
@@ -69,7 +82,7 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let sections = ProductController.sharedController.fetchedResultsController.sections,
+        guard let sections = self.fetchedResultsController.sections,
             let index = Int(sections[section].name) else { return nil }
         
         if index == 1 {
@@ -81,8 +94,8 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? AddProductsTableViewCell else { return UITableViewCell() }
-//          let product = ProductController.sharedController.sortedProducts[indexPath.section][indexPath.row]
-            let product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
+          let product = self.fetchedResultsController.object(at: indexPath)
+//            let product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
 //        cell.product = product
         
         cell.updateWithProduct(product: product)
@@ -121,14 +134,14 @@ class AddProductsViewController: UIViewController, UITableViewDataSource, UITabl
             guard let indexPath = indexPath,
                 let newIndexPath = newIndexPath
                 else { return }
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.insertRows(at: [newIndexPath], with: .fade)
         case .update:
             guard let indexPath = indexPath,
                 let newIndexPath = newIndexPath
                 else { return }
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.insertRows(at: [newIndexPath], with: .fade)
         }
     }
     
