@@ -9,12 +9,44 @@
 import UIKit
 
 class PopoverProductDetailViewController: UIViewController {
+    
+    var product: Product?
+    
+    @IBOutlet weak var productLogoImageView: UIImageView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var productExtendedNameLabel: UILabel!
+    @IBOutlet weak var aboutProductTextView: UITextView!
+    @IBOutlet weak var applicationInstructionsTextView: UITextView!
+    
+    
+    @IBAction func closeButtonTapped(_ sender: AnyObject) {
+    }
+    @IBAction func outsideGestureTapped(_ sender: AnyObject) {
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let product = product {
+            updateWithProduct(product: product)
+        }
     }
+    
+    func updateWithProduct(product: Product) {
+        productLogoImageView.image = UIImage(named: product.logoName)
+        productNameLabel.text = "\(product.name)"
+        priceLabel.text = "\(product.price)"
+    // CHANGE THIS!!!!!!!!!!!
+        productExtendedNameLabel.text = "\(product.name)"
+        aboutProductTextView.text = "\(product.ingredients)"
+        applicationInstructionsTextView.text = "\(product.instructions)"
+        
+    }
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

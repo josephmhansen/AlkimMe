@@ -18,6 +18,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     
 //    let collectionView: UICollectionView
     var blockOperations: [BlockOperation] = []
+//    let products = ProductController.sharedController.fetchedResultsController
     
     
     override func viewDidLoad() {
@@ -277,10 +278,17 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toProductPopover" {
-            let controller = segue.destination
             
-                controller.popoverPresentationController?.delegate = self
-                controller.preferredContentSize = CGSize(width: 320, height: 400)
+            if let indexPaths = collectionView?.indexPathsForSelectedItems {
+                let indexPath = indexPaths[0]
+                let controller = segue.destination as? PopoverProductDetailViewController
+                controller?.product = ProductController.sharedController.fetchedResultsController.object(at: indexPath)
+            }
+            
+            
+            
+//                controller.popoverPresentationController?.delegate = self
+//                controller.preferredContentSize = CGSize(width: 320, height: 400)
             
         }
     }

@@ -398,30 +398,6 @@
             </objects>
             <point key="canvasLocation" x="-1518" y="33"/>
         </scene>
-        <!--Popover Product Detail View Controller-->
-        <scene sceneID="QL0-2v-iNx">
-            <objects>
-                <viewController storyboardIdentifier="popoverEdit" modalPresentationStyle="formSheet" id="X1V-li-ezB" customClass="PopoverProductDetailViewController" customModule="AlkimMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aUF-8y-8zr"/>
-                        <viewControllerLayoutGuide type="bottom" id="ETE-3K-VGs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="sIJ-Wb-tm9">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="430"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="430"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="430"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3OC-X4-DCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1430" y="-1520"/>
-        </scene>
         <!--Shelf-->
         <scene sceneID="xdd-Oy-bS4">
             <objects>
@@ -544,10 +520,10 @@
             </objects>
             <point key="canvasLocation" x="-178" y="33"/>
         </scene>
-        <!--View Controller-->
+        <!--Popover Product Detail View Controller-->
         <scene sceneID="kQ0-OY-ndV">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="hxD-Pb-PBF" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="hxD-Pb-PBF" customClass="PopoverProductDetailViewController" customModule="AlkimMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LBQ-rl-ufZ"/>
                         <viewControllerLayoutGuide type="bottom" id="j0c-bO-5lU"/>
@@ -584,6 +560,9 @@
                                                                         <constraint firstAttribute="width" secondItem="EBo-zK-pv1" secondAttribute="height" multiplier="1:1" id="26N-r4-LHJ"/>
                                                                     </constraints>
                                                                     <state key="normal" image="close"/>
+                                                                    <connections>
+                                                                        <action selector="closeButtonTapped:" destination="hxD-Pb-PBF" eventType="touchUpInside" id="KsA-ZP-2C7"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -681,9 +660,21 @@
                             <constraint firstAttribute="trailing" secondItem="w4f-5w-0zy" secondAttribute="trailing" id="rNs-JY-TDB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="aboutProductTextView" destination="gKV-nO-zoa" id="VEb-I2-9Fe"/>
+                        <outlet property="applicationInstructionsTextView" destination="Mdx-CD-aps" id="A23-QL-cXu"/>
+                        <outlet property="priceLabel" destination="94B-a5-ieq" id="OvF-Za-Rr5"/>
+                        <outlet property="productExtendedNameLabel" destination="Mgl-og-cRO" id="8Ru-Wf-NyG"/>
+                        <outlet property="productLogoImageView" destination="wua-1P-YCR" id="aaG-Vx-1Qt"/>
+                        <outlet property="productNameLabel" destination="oPY-eI-jdI" id="pff-ny-2Uu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZ3-ML-ZfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="yrK-MM-Pxc"/>
+                <tapGestureRecognizer id="yrK-MM-Pxc">
+                    <connections>
+                        <action selector="outsideGestureTapped:" destination="hxD-Pb-PBF" id="9ew-nj-Bao"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="695.20000000000005" y="-1585.4572713643179"/>
         </scene>

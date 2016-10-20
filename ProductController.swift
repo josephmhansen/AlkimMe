@@ -16,7 +16,6 @@ class ProductController {
     
     let fetchedResultsController: NSFetchedResultsController<Product>
     
-
     
     
     init() {
