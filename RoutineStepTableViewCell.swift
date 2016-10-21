@@ -18,6 +18,7 @@ class RoutineStepTableViewCell: UITableViewCell {
     @IBOutlet weak var productLogoImageView: UIImageView!
 
     @IBOutlet weak var stepProductInstructions: UITextView!
+    @IBOutlet weak var nextButton: UIButton!
     
     @IBAction func nextButtonTapped(_ sender: AnyObject) {
     }

@@ -52,7 +52,8 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
         guard collectionView != nil else { return }
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: screenWidth / 2, height: screenHeight / 2)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout.itemSize = CGSize(width: (screenWidth) / 2, height: (screenHeight - 85) / 2)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         collectionView?.collectionViewLayout = layout
@@ -122,7 +123,8 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productShelfCell", for: indexPath) as? ShelfCollectionViewCell else { return UICollectionViewCell() }
-        
+//        cell.frame.size.width = (screenWidth) / 3
+//        cell.frame.size.height = (screenHeight - 85) / 3
         let product = self.fetchedResultsController.object(at: indexPath)
         
 //        var product: Product?
@@ -139,6 +141,7 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     
         return cell
     }
+    
     
 //    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        guard let attributes = collectionView.layoutAttributesForItem(at: indexPath) else { return }

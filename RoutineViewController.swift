@@ -12,11 +12,11 @@ import CoreData
 class RoutineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var routineStackView: UIStackView!
+   
+
+    
     
     var fetchedResultsController: NSFetchedResultsController<Product>!
-    
-    
-    
     var selectedIndexPath: IndexPath? = nil
     var previousCellIndexPath: IndexPath?
     
@@ -41,6 +41,12 @@ class RoutineViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.reloadData()
         
     }
+    
+
+    
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,9 +66,10 @@ class RoutineViewController: UIViewController, UITableViewDataSource, UITableVie
         let ip = indexPath
         if selectedIndexPath == ip {
             cell.instructionsStackView.isHidden = false
-            
+            cell.nextButton.isHidden = false
         } else {
             cell.instructionsStackView.isHidden = true
+            cell.nextButton.isHidden = true
         }
         
         let productStep = self.fetchedResultsController.object(at: indexPath)
@@ -104,12 +111,9 @@ class RoutineViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let collapsedStepHeight: CGFloat = 70
+        let collapsedStepHeight: CGFloat = 65
         
         let expandedStepHeight: CGFloat = self.routineStackView.frame.height
-//        let navigationBarHeight: CGFloat = 44
-//        let tabBarHeight: CGFloat = 60
-//        let expandedStepHeight: CGFloat = (self.view.frame.height) - navigationBarHeight - tabBarHeight
         
         let ip = indexPath
         if selectedIndexPath != nil {
