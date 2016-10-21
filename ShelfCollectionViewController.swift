@@ -14,6 +14,10 @@ private let reuseIdentifier = "Cell"
 class ShelfCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate {
     var fetchedResultsController: NSFetchedResultsController<Product>!
     
+    var screenSize: CGRect!
+    var screenWidth: CGFloat = 0.0
+    var screenHeight: CGFloat = 0.0
+    
     // MARK: Properties
     
 //    let collectionView: UICollectionView
@@ -24,6 +28,11 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        screenSize = UIScreen.main.bounds
+        screenWidth = screenSize.width
+        screenHeight = screenSize.height
+        
         
         let fetchRequest: NSFetchRequest<Product> = Product.fetchRequest()
         let prioritySortDescriptor = NSSortDescriptor(key: "priority", ascending: true)
@@ -41,9 +50,15 @@ class ShelfCollectionViewController: UICollectionViewController, NSFetchedResult
         
         collectionView?.reloadData()
         guard collectionView != nil else { return }
-//        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: screenWidth / 2, height: screenHeight / 2)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView?.collectionViewLayout = layout
+        
 
-        // Do any additional setup after loading the view.
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
