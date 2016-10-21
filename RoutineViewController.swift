@@ -11,6 +11,7 @@ import CoreData
 
 class RoutineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var routineStackView: UIStackView!
     
     var fetchedResultsController: NSFetchedResultsController<Product>!
     
@@ -104,7 +105,11 @@ class RoutineViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let collapsedStepHeight: CGFloat = 70
-        let expandedStepHeight: CGFloat = 450
+        
+        let expandedStepHeight: CGFloat = self.routineStackView.frame.height
+//        let navigationBarHeight: CGFloat = 44
+//        let tabBarHeight: CGFloat = 60
+//        let expandedStepHeight: CGFloat = (self.view.frame.height) - navigationBarHeight - tabBarHeight
         
         let ip = indexPath
         if selectedIndexPath != nil {
