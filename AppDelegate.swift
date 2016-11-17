@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().isTranslucent = false
         
+        var pageController = UIPageControl.appearance()
+        pageController.pageIndicatorTintColor = UIColor.lightGray
+        pageController.currentPageIndicatorTintColor = UIColor.black
+        pageController.backgroundColor = UIColor.white
         
         
         
