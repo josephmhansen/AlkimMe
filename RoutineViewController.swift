@@ -9,8 +9,8 @@
 import UIKit
 import CoreData
 
-class RoutineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
-    @IBOutlet weak var tableView: UITableView!
+class RoutineViewController: UIViewController {
+    //@IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var routineStackView: UIStackView!
    
 
@@ -23,7 +23,7 @@ class RoutineViewController: UIViewController, UITableViewDataSource, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        /*
         let fetchRequest: NSFetchRequest<Product> = Product.fetchRequest()
         let prioritySortDescriptor = NSSortDescriptor(key: "priority", ascending: true)
         fetchRequest.sortDescriptors = [prioritySortDescriptor]
@@ -37,8 +37,8 @@ class RoutineViewController: UIViewController, UITableViewDataSource, UITableVie
         } catch {
             NSLog("Error with the initial fetch of the fetchedResultsController: \(error)")
         }
+        */
         
-        self.tableView.reloadData()
         
     }
     
@@ -52,7 +52,10 @@ class RoutineViewController: UIViewController, UITableViewDataSource, UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+
+}
+    /*
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.fetchedResultsController.sections?.count ?? 0
     }
@@ -127,6 +130,8 @@ class RoutineViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
     }
+ */
+    
     /*
     // MARK: - Navigation
 
@@ -137,6 +142,9 @@ class RoutineViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     */
     
+    
+    
+    /*
     //=============================================================
     // MARK: FetchedResultsControllerDelegate Methods
     //=============================================================
@@ -193,3 +201,4 @@ class RoutineViewController: UIViewController, UITableViewDataSource, UITableVie
 
 
 }
+ */
