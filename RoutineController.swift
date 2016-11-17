@@ -12,8 +12,8 @@ class RoutineController {
     
     static let sharedController = RoutineController()
     //research options to set a default string value for morning and evening times
-    var morningFireTime:NSDate?
-    var eveningFireTime:NSDate?
+    var morningFireTime: String?
+    var eveningFireTime: String?
     
     
     func createRoutineFromCurrentShelf(){}
@@ -24,4 +24,8 @@ class RoutineController {
     func saveEveningFireDate(){}
     func checkDailySurveyStatus(){}
     func modifyRoutine(){}
+}
+
+extension Routine {
+    
 }

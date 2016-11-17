@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().isTranslucent = false
         
+        
+        
+        
         return true
     }
 

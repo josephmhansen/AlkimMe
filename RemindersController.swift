@@ -13,22 +13,42 @@ import EventKitUI
 class ReminderController {
     static let sharedController = ReminderController()
     
-    var reminderAccessGranted: Bool = false
     
-    let eventStore = EKEventStore()
+    var reminderAccessGranted: Bool {
+        var success: Bool = true
+        ReminderController.sharedController.eventStore?.requestAccess(to: .reminder, completion: { (access, error) in
+            if error != nil {
+                print("Error requesting access: \(error?.localizedDescription)")
+            }
+            success = access
+        })
+        return success
+    }
+    
+    var eventStore: EKEventStore?
+    
+    init() {
+        self.eventStore = EKEventStore()
+    }
     
     var reminders: [EKReminder]?
     
-    func requestAccessToReminders() {
-        eventStore.requestAccess(to: EKEntityType.reminder) { (accessGranted, error) in
-            
-            if accessGranted == true {
-                dispatchMain()
-                
-            }
-        }
+    //creating for first time
+    func createNewReminder(forReminder reminder: NSDate) {
+        guard let eventStore = eventStore else { return }
+        let newReminder = EKReminder.init(eventStore: eventStore)
+        //newReminder.
     }
     
+    //modifying
+    func changeSelectedReminder(forReminder reminderIdentifier: String) {
+        
+    }
+    
+    //deleting
+    func cancelAllReminders(forReminders remindersIdentifiers: [String] ) {
+        
+    }
 //    func loadReminders() {
 //        guard let
 //        self.reminders = eventStore.event(withIdentifier: <#T##String#>)
@@ -43,3 +63,5 @@ class ReminderController {
 //Delete all: fetch all from data base by identifier, then delete all reminders
     
 }
+
+
