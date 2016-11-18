@@ -15,13 +15,15 @@ class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerD
     var stepProductLogos: NSArray!
     
     var products: [Product] = ShelfCollectionViewController.products
+    
     //passing valur from the product segue
     var productName: String?
     
-    
+    private let productStepContentViewControllerCache = NSCache<NSString,RoutineStepPageViewController>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //self.stepProductTitles = NSArray(objects: [Product]())
         //self.stepProductLogos = NSArray(objects: [Product]())
@@ -37,6 +39,11 @@ class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerD
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMove(toParentViewController: self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let productName = productName else { return }
     }
     
     override func didReceiveMemoryWarning() {
