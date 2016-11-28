@@ -19,6 +19,9 @@ class ContentViewController: UIViewController {
     var nameIndex: String!
     var productLogoFile: String!
     
+    var product: Product?
+    var bookName: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.productNameLabel.text = self.nameIndex
@@ -30,9 +33,12 @@ class ContentViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func configure(with product: Product) {
+        self.product = product
+        let priority = product.priority
+        self.productNameLabel.text = product.name
+        self.productLogoImageView.image = UIImage(named: "\(product.logoName)")
+        self.productDirections.text = product.instructions
     }
     
     

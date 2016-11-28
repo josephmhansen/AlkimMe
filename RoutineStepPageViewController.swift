@@ -11,15 +11,19 @@ import UIKit
 class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     var pageViewController: UIPageViewController!
+    /*
     var stepProductTitles: NSArray!
     var stepProductLogos: NSArray!
+ */
     
-    var products: [Product] = ShelfCollectionViewController.products
+    var routine: [Product] = ShelfCollectionViewController.products
     
-    //passing valur from the product segue
+    //passing value from the shelf collectionViewController segue
     var productName: String?
     
     private let productStepContentViewControllerCache = NSCache<NSString,RoutineStepPageViewController>()
+    
+    private let productContentViewControllerCache = NSCache<NSString,ContentViewController>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +31,15 @@ class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerD
         
         //self.stepProductTitles = NSArray(objects: [Product]())
         //self.stepProductLogos = NSArray(objects: [Product]())
-        self.pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController
-        self.pageViewController.dataSource = self
+        self.pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as? UIPageViewController
         
-        var startVC = self.viewControllerAtIndex(index: 0) as ContentViewController
-        var viewControllers = NSArray(object: startVC)
+        self.dataSource = self
+        self.delegate = self
         
-        self.pageViewController.setViewControllers(viewControllers as! [UIViewController], direction: .forward, animated: true, completion: nil)
+        //var startVC = self.viewControllerAtIndex(index: 0) as ContentViewController
+        //var viewControllers = NSArray(object: startVC)
+        
+        //self.pageViewController.setViewControllers(viewControllers as! [UIViewController], direction: .forward, animated: true, completion: nil)
         self.pageViewController.view.frame = CGRect(x: 0, y: 30, width: self.view.frame.width, height: self.view.frame.size.height - 60)
         
         self.addChildViewController(self.pageViewController)
@@ -41,10 +47,12 @@ class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerD
         self.pageViewController.didMove(toParentViewController: self)
     }
     
+    /*
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard let productName = productName else { return }
     }
+ */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -52,16 +60,37 @@ class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerD
     }
     
     func viewControllerAtIndex(index: Int) -> ContentViewController {
-        if ((self.stepProductTitles.count == 0) || (index >= self.stepProductTitles.count)) {
+        if ((routine.count == 0) || (index >= routine.count)) {
             return ContentViewController()
         }
-        var vc: ContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as! ContentViewController
-        vc.productLogoFile = self.stepProductLogos[index] as! String
-        vc.productNameLabel.text = self.stepProductTitles[index] as! String
+        let vc: ContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as! ContentViewController
+        
         vc.pageIndex = index
         
         return vc
     }
+    
+    
+    
+    
+    //finding the index value of a product in the array
+    
+    private func indexOfProduct(forViewController viewController: UIViewController) -> Int {
+        guard let contentViewController = viewController as? ContentViewController else { fatalError("Unexpected view controller type in page view controller")}
+        guard let product = contentViewController.product else {fatalError()}
+        guard let viewControllerIndex = routine.index(of: product) else {fatalError("ViewController's product not found.")}
+        return viewControllerIndex
+    }
+    
+    //this function will return a cached ViewController or create a new ViewController
+    /*
+    private func createCachedViewController(forPage pageIndex: Int) -> ContentViewController {
+        let product = routine[pageIndex]
+        if let cachedController = productContentViewControllerCache.object(forKey: product.priority as NSString) {
+            return cachedController
+        }
+    }
+    */
     
     //MARK: - Page View Controller Data Source
     
@@ -69,7 +98,7 @@ class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerD
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         var vc = viewController as! ContentViewController
-        var index = vc.pageIndex as! Int
+        var index = vc.pageIndex as Int
         
         if (index == 0 || index == NSNotFound)
         {
@@ -90,14 +119,14 @@ class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerD
         
         index += 1
         
-        if (index == self.stepProductTitles.count) {
+        if (index == routine.count) {
             return nil
         }
         return self.viewControllerAtIndex(index: index)
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return self.stepProductTitles.count
+        return routine.count
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {

@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 
 class RoutineViewController: UIViewController {
-    //@IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var routineStackView: UIStackView!
    
 
