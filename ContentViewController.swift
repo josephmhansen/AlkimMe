@@ -35,7 +35,6 @@ class ContentViewController: UIViewController {
 
     func configure(with product: Product) {
         self.product = product
-        let priority = product.priority
         self.productNameLabel.text = product.name
         self.productLogoImageView.image = UIImage(named: "\(product.logoName)")
         self.productDirections.text = product.instructions

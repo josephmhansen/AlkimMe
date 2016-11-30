@@ -16,12 +16,20 @@ class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerD
     var stepProductLogos: NSArray!
  */
     
-    var routine: [Product] = ShelfCollectionViewController.products
+    
+    var routine: [Product] = [] {
+        didSet {
+            let initialViewController = self.createCachedViewController(forPage: 0)
+            self.setViewControllers([initialViewController], direction: .forward, animated: false, completion: nil)
+        }
+    }
+    
+    
     
     //passing value from the shelf collectionViewController segue
     var productName: String?
     
-    private let productStepContentViewControllerCache = NSCache<NSString,RoutineStepPageViewController>()
+    //private let productStepContentViewControllerCache = NSCache<NSString,RoutineStepPageViewController>()
     
     private let productContentViewControllerCache = NSCache<NSString,ContentViewController>()
     
@@ -36,15 +44,18 @@ class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerD
         self.dataSource = self
         self.delegate = self
         
+        
+        
         //var startVC = self.viewControllerAtIndex(index: 0) as ContentViewController
         //var viewControllers = NSArray(object: startVC)
         
         //self.pageViewController.setViewControllers(viewControllers as! [UIViewController], direction: .forward, animated: true, completion: nil)
-        self.pageViewController.view.frame = CGRect(x: 0, y: 30, width: self.view.frame.width, height: self.view.frame.size.height - 60)
-        
+        //self.pageViewController.view.frame = CGRect(x: 0, y: 30, width: self.view.frame.width, height: self.view.frame.size.height - 60)
+        /*
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMove(toParentViewController: self)
+ */
     }
     
     /*
@@ -83,61 +94,62 @@ class RoutineStepPageViewController: UIPageViewController, UIPageViewControllerD
     }
     
     //this function will return a cached ViewController or create a new ViewController
-    /*
+    
     private func createCachedViewController(forPage pageIndex: Int) -> ContentViewController {
         let product = routine[pageIndex]
-        if let cachedController = productContentViewControllerCache.object(forKey: product.priority as NSString) {
+        if let cachedController = productContentViewControllerCache.object(forKey: product.name as NSString) {
             return cachedController
+        } else {
+            guard let controller = storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as? ContentViewController else {fatalError("Unable to instantiate a ContentViewController")}
+            controller.configure(with: product)
+            
+            productContentViewControllerCache.setObject(controller, forKey: product.name as NSString)
+            
+            return controller
         }
     }
-    */
+    
     
     //MARK: - Page View Controller Data Source
     
     
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        var vc = viewController as! ContentViewController
-        var index = vc.pageIndex as Int
-        
-        if (index == 0 || index == NSNotFound)
-        {
+        let index = indexOfProduct(forViewController: viewController)
+        if index > 0 {
+            return createCachedViewController(forPage: index - 1)
+        } else {
             return nil
         }
-        index -= 1
-        return self.viewControllerAtIndex(index: index)
         
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        var vc = viewController as! ContentViewController
-        var index = vc.pageIndex as Int
-        
-        if (index == NSNotFound) {
+        let index = indexOfProduct(forViewController: viewController)
+        if index < routine.count - 1 {
+            return createCachedViewController(forPage:  index + 1)
+        } else {
             return nil
         }
-        
-        index += 1
-        
-        if (index == routine.count) {
-            return nil
-        }
-        return self.viewControllerAtIndex(index: index)
     }
+    /*
+    func viewControllerAtIndex(index: Int) -> UIViewController? {
+        // TODO: implement
+        return nil
+    }
+ */
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return routine.count
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return 0
+        guard let currrentViewController = pageViewController.viewControllers?.first else { return 0 }
+        
+        return indexOfProduct(forViewController: currrentViewController)
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard let productName = productName else { return }
-        let viewController = pageViewController.viewControllers?[0]
-        self.navigationItem.title = viewController?.navigationItem.title
-    }
+    
     
     /*
      // MARK: - Navigation
